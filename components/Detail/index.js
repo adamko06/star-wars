@@ -16,14 +16,27 @@ const Detail = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  // useEffect(() => {
+  //   content.films.forEach((film) => {
+  //     fetch(film)
+  //       .then((res) => res.json())
+  //       .then((newContent) => {
+  //         setContent(newContent);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   });
+  // }, []);
+
+  // console.log(content.films);
+
   return (
     <div>
       {content && (
-        <div class='container'>
-          <div class='detail'>
+        <div className='container'>
+          <div className='box_detail_container'>
             <h1>{content.name}</h1>
-            <div class='box_detail'>
-              <div class='box_detail_item'>
+            <div className='box_detail'>
+              <div className='box_detail_item'>
                 <img
                   src={
                     imgs[content.name] ||
@@ -31,7 +44,7 @@ const Detail = () => {
                   }
                 />
               </div>
-              <div class='box_detail_item'>
+              <div className='box_detail_item'>
                 <ul>
                   <li>Gender: {content.gender}</li>
                   <li>Height: {content.height}</li>
