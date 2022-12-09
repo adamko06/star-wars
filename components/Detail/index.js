@@ -1,0 +1,51 @@
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import imgs from '../../config/imgs';
+
+const Detail = () => {
+  const router = useRouter();
+
+  const [content, setContent] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://swapi.dev/api/people/${router.query.heroId}`)
+      .then((res) => res.json())
+      .then((newContent) => {
+        setContent(newContent);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  return (
+    <div>
+      {content && (
+        <div class='container'>
+          <div class='detail'>
+            <h1>{content.name}</h1>
+            <div class='box_detail'>
+              <div class='box_detail_item'>
+                <img
+                  src={
+                    imgs[content.name] ||
+                    'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
+                  }
+                />
+              </div>
+              <div class='box_detail_item'>
+                <ul>
+                  <li>Gender: {content.gender}</li>
+                  <li>Height: {content.height}</li>
+                  <li>Mass: {content.mass}</li>
+                  <li>Hair: {content.hair_color}</li>
+                  <li>Skin: {content.skin_color}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Detail;
