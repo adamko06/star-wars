@@ -4,18 +4,21 @@ import Link from 'next/link';
 
 const Home = () => {
   const [content, setContent] = useState(null);
-
+  const [page, setPage] = useState(1);
   useEffect(() => {
-    fetch('https://swapi.dev/api/people')
+    fetch(`https://swapi.dev/api/people/?page=${page}`)
       .then((res) => res.json())
       .then((newContent) => {
         setContent(newContent);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [page]);
 
-  // console.log(content?.results);
-
+  const [search, setSearch] = useState('');
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+  };
+  console.log(page);
   return (
     <div>
       <main>
@@ -23,7 +26,7 @@ const Home = () => {
           <div className='toolbar'>
             <form>
               <input placeholder='Filter' />
-              <input placeholder='Search' />
+              <input placeholder='Search by Name' type='text' onChange={handleChange} value={search} />
             </form>
           </div>
         </div>
@@ -31,26 +34,50 @@ const Home = () => {
           <div className='box'>
             {content &&
               content.results.map((item, index) => {
-                return (
-                  <div className='box_item' key={index}>
-                    <Link href={`hero/${index + 1}`}>
-                      <a>
-                        <img
-                          src={
-                            imgs[item.name] ||
-                            'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                          }
-                        />
-                        <div className='overlay'>
-                          <div className='text'>{item.name}</div>
-                        </div>
-                      </a>
-                    </Link>
-                  </div>
-                );
+                if (search == '') {
+                  return (
+                    <div className='box_item' key={index}>
+                      <Link href={`hero/${index + 1}`}>
+                        <a>
+                          <img
+                            src={
+                              imgs[item.name] ||
+                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
+                            }
+                          />
+                          <div className='overlay'>
+                            <div className='text'>{item.name}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
+                  );
+                } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
+                  return (
+                    <div className='box_item' key={index}>
+                      <Link href={`hero/${index + 1}`}>
+                        <a>
+                          <img
+                            src={
+                              imgs[item.name] ||
+                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
+                            }
+                          />
+                          <div className='overlay'>
+                            <div className='text'>{item.name}</div>
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
+                  );
+                }
               })}
           </div>
-          <div className='box'></div>
+          <div>
+            <h>{page}</h>
+            <button onClick={() => setPage(page - 1)}>Previos</button>
+            <button onClick={() => setPage(page + 1)}>Next</button>
+          </div>
         </div>
       </main>
     </div>
