@@ -126,6 +126,32 @@ header {
       }
     }
   }
+
+  &_pagination {
+    padding: 20px 1% 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    & button {
+      width: 50px;
+      font-size: 20px;
+      color: #fff;
+      background: #000;
+      padding: 10px;
+      // margin-left: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      &:disabled {
+        background-color: #3f3f3f;
+        cursor: unset;
+      }
+    }
+    & div {
+      margin: 0 10px;
+    }
+  }
 }
 
 .overlay {

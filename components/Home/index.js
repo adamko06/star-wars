@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import imgs from '../../config/imgs';
 import Link from 'next/link';
+import Box from '../Box';
 
 const Home = () => {
   const [content, setContent] = useState(null);
@@ -18,7 +19,9 @@ const Home = () => {
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
+
   console.log(page);
+  console.log(page <= 1);
   return (
     <div>
       <main>
@@ -35,48 +38,20 @@ const Home = () => {
             {content &&
               content.results.map((item, index) => {
                 if (search == '') {
-                  return (
-                    <div className='box_item' key={index}>
-                      <Link href={`hero/${index + 1}`}>
-                        <a>
-                          <img
-                            src={
-                              imgs[item.name] ||
-                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                            }
-                          />
-                          <div className='overlay'>
-                            <div className='text'>{item.name}</div>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  );
+                  return <Box hero={item} index={index} key={index} page={page} />;
                 } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-                  return (
-                    <div className='box_item' key={index}>
-                      <Link href={`hero/${index + 1}`}>
-                        <a>
-                          <img
-                            src={
-                              imgs[item.name] ||
-                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                            }
-                          />
-                          <div className='overlay'>
-                            <div className='text'>{item.name}</div>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  );
+                  return <Box hero={item} index={index} key={index} page={page} />;
                 }
               })}
           </div>
-          <div>
-            <h>{page}</h>
-            <button onClick={() => setPage(page - 1)}>Previos</button>
-            <button onClick={() => setPage(page + 1)}>Next</button>
+          <div className='box_pagination'>
+            <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
+              ←
+            </button>
+            <div>{page}</div>
+            <button onClick={() => setPage(page + 1)} disabled={page >= 9}>
+              →
+            </button>
           </div>
         </div>
       </main>

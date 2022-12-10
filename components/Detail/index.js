@@ -16,19 +16,6 @@ const Detail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // useEffect(() => {
-  //   content.films.forEach((film) => {
-  //     fetch(film)
-  //       .then((res) => res.json())
-  //       .then((newContent) => {
-  //         setContent(newContent);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   });
-  // }, []);
-
-  // console.log(content.films);
-
   return (
     <div>
       {content && (

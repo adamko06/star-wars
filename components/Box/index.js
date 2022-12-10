@@ -1,19 +1,19 @@
 import Link from 'next/link';
 import imgs from '../../config/imgs';
 
-const Box = (item, index) => {
+const Box = (props) => {
   return (
-    <div className='box_item' key={index}>
-      <Link href={`hero/${index + 1}`}>
+    <div className='box_item' key={props.index}>
+      <Link href={`hero/${props.index + 1 + (props.page - 1) * 10}`}>
         <a>
           <img
             src={
-              imgs[item.name] ||
+              imgs[props.hero.name] ||
               'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
             }
           />
           <div className='overlay'>
-            <div className='text'>{item.name}</div>
+            <div className='text'>{props.hero.name}</div>
           </div>
         </a>
       </Link>

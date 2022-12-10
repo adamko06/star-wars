@@ -9,4 +9,6 @@ export default {
   'R5-D4': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/R5-D4.jpg?raw=true',
   'Biggs Darklighter': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/Biggs.jpeg?raw=true',
   'Obi-Wan Kenobi': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/obi.jpg?raw=true',
+  'Anakin Skywalker': 'https://media1.jex.cz/images/media1:4c417e3a5127d.jpg/Anakin%20Skywalker.jpg',
+  'Wilhuff Tarkin': 'https://i.pinimg.com/474x/79/3e/09/793e0911195b46ffa24c459da24fc29e.jpg',
 };
