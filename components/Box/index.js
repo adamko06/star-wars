@@ -3,8 +3,8 @@ import imgs from '../../config/imgs';
 
 const Box = (props) => {
   return (
-    <div className='box_item' key={props.index}>
-      <Link href={`hero/${props.index + 1 + (props.page - 1) * 10}`}>
+    <div className='box_item' key={props.index > 10}>
+      <Link href={`hero/${props.index > 16 ? props.index + 2 : props.index + 1}`}>
         <a>
           <img
             src={
