@@ -9,4 +9,28 @@ export default {
   'R5-D4': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/R5-D4.jpg?raw=true',
   'Biggs Darklighter': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/Biggs.jpeg?raw=true',
   'Obi-Wan Kenobi': 'https://github.com/DanIvonneCaSan/StarWarsApp/blob/master/assets/images/characters/obi.jpg?raw=true',
+  'Anakin Skywalker': 'https://media1.jex.cz/images/media1:4c417e3a5127d.jpg/Anakin%20Skywalker.jpg',
+  'Wilhuff Tarkin': 'https://i.pinimg.com/474x/79/3e/09/793e0911195b46ffa24c459da24fc29e.jpg',
+  Chewbacca: 'https://i.pinimg.com/originals/6f/98/28/6f98281a45d741dceddcf5401320be93.jpg',
+  'Han Solo':
+    'https://upload.wikimedia.org/wikipedia/en/b/be/Han_Solo_depicted_in_promotional_image_for_Star_Wars_%281977%29.jpg',
+  Greedo: 'https://i.pinimg.com/564x/aa/61/f2/aa61f2d626f0bc5b755b5e4209d2271c.jpg',
+  'Jabba Desilijic Tiure': 'https://www.superherodb.com/pictures2/portraits/10/050/10469.jpg?v=1462367071',
+  'Wedge Antilles': 'https://upload.wikimedia.org/wikipedia/en/4/41/Wedge_Antilles-Denis_Lawson-Star_Wars_%281977%29.jpg',
+  'Jek Tono Porkins': 'https://pbs.twimg.com/profile_images/614431171460624386/Z0pxKl9v_400x400.png',
+  Yoda: 'https://i.pinimg.com/736x/7f/3a/ee/7f3aee2c3ad90e7d3f89bd6604bb499a--art-auction-star-wars-clone-wars.jpg',
+  Palpatine: 'https://i.pinimg.com/originals/74/95/25/749525be9b49bba54028328bf9ba2f62.jpg',
+  'Boba Fett':
+    'https://s.yimg.com/ny/api/res/1.2/LJ2llDLFt6N8mCBAPrilqw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTczMw--/https://media.zenfs.com/en/homerun/feed_manager_auto_publish_494/905f723f3db3e3767cfc0bb5e13bf8f8',
+  'IG-88': 'https://preview.redd.it/6d3x6naan7p81.jpg?width=593&format=pjpg&auto=webp&s=d1901713b4a1c6aa7735342f6f74b3fd0280ebdd',
+  Bossk:
+    'https://discourse.disneyheroesgame.com/uploads/default/optimized/3X/8/3/832bfca35d687e578f0a03375e250a1bc2e81856_2_682x1024.jpeg',
+  'Lando Calrissian': 'https://starwarsblog.starwars.com/wp-content/uploads/2022/02/insider-heroes-lando-headshot.jpg',
+  Lobot: 'https://i.pinimg.com/originals/aa/7d/4e/aa7d4e4d6b906fd902e7075f14a4e119.jpg',
+  Ackbar: 'https://pbs.twimg.com/profile_images/508629227852537856/LtAUfq3u_400x400.jpeg',
+  'Mon Mothma': 'https://i.pinimg.com/564x/08/68/f3/0868f39193080aeabe94e2e18e34319b.jpg',
+  'Arvel Crynyd': 'http://ayay.co.uk/backgrounds/star_wars/rebel_alliance_characters/arvel-crynyd.jpg',
+  'Wicket Systri Warrick': 'http://pm1.narvii.com/6270/e538b68a8d606007c2209ed79640d30a31d122ce_00.jpg',
+  'Nien Nunb':
+    'https://images.immediate.co.uk/production/volatile/sites/3/2020/01/Screen-Shot-2020-01-11-at-12.52.38-f33ecaf.png',
 };

@@ -1,24 +1,50 @@
 import { useState, useEffect } from 'react';
 import imgs from '../../config/imgs';
 import Link from 'next/link';
+import Box from '../Box';
+
+import axios from 'axios';
 
 const Home = () => {
-  const [content, setContent] = useState(null);
   const [page, setPage] = useState(1);
-  useEffect(() => {
-    fetch(`https://swapi.dev/api/people/?page=${page}`)
-      .then((res) => res.json())
-      .then((newContent) => {
-        setContent(newContent);
-      })
-      .catch((err) => console.log(err));
-  }, [page]);
-
+  const [loading, setLoading] = useState(false);
+  const [content, setContent] = useState(null);
   const [search, setSearch] = useState('');
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
-  console.log(page);
+
+  //Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(10);
+  const [maxPage, setMaxPage] = useState('');
+
+  //Get current posts
+  const indexOfLastPost = currentPage * postPerPage;
+  const indexOfFirstPost = indexOfLastPost - postPerPage;
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchReq1 = fetch(`https://swapi.dev/api/people/?page=1`).then((res) => res.json());
+    const fetchReq2 = fetch(`https://swapi.dev/api/people/?page=2`).then((res) => res.json());
+    const fetchReq3 = fetch(`https://swapi.dev/api/people/?page=3`).then((res) => res.json());
+
+    const allData = Promise.all([fetchReq1, fetchReq2, fetchReq3]);
+
+    allData.then((res) => {
+      const [res1, res2, res3] = res;
+      const allFetch = [];
+      res.forEach((item) => {
+        allFetch.push(...item.results);
+      });
+      setContent(allFetch);
+      setTimeout(() => {
+        console.log(content);
+      }, '6000');
+    });
+    setLoading(false);
+  }, []);
+
   return (
     <div>
       <main>
@@ -31,53 +57,32 @@ const Home = () => {
           </div>
         </div>
         <div className='container'>
-          <div className='box'>
-            {content &&
-              content.results.map((item, index) => {
-                if (search == '') {
-                  return (
-                    <div className='box_item' key={index}>
-                      <Link href={`hero/${index + 1}`}>
-                        <a>
-                          <img
-                            src={
-                              imgs[item.name] ||
-                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                            }
-                          />
-                          <div className='overlay'>
-                            <div className='text'>{item.name}</div>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  );
-                } else if (item.name.toLowerCase().includes(search.toLowerCase())) {
-                  return (
-                    <div className='box_item' key={index}>
-                      <Link href={`hero/${index + 1}`}>
-                        <a>
-                          <img
-                            src={
-                              imgs[item.name] ||
-                              'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                            }
-                          />
-                          <div className='overlay'>
-                            <div className='text'>{item.name}</div>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  );
-                }
-              })}
-          </div>
-          <div>
-            <h>{page}</h>
-            <button onClick={() => setPage(page - 1)}>Previos</button>
-            <button onClick={() => setPage(page + 1)}>Next</button>
-          </div>
+          {loading ? (
+            <h2>Loading...</h2>
+          ) : (
+            <div className='box'>
+              {content &&
+                content.map((item, index) => {
+                  if (search == '' && index >= indexOfFirstPost && index < indexOfLastPost) {
+                    return <Box hero={item} index={index} key={index} />;
+                  } else if (search !== '' && item.name.toLowerCase().includes(search.toLowerCase().trim())) {
+                    return <Box hero={item} index={index} key={index} />;
+                  }
+                })}
+            </div>
+          )}
+
+          {search == '' && (
+            <div className='box_pagination'>
+              <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage <= 1}>
+                ←
+              </button>
+              <div>{currentPage}</div>
+              <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= 3}>
+                →
+              </button>
+            </div>
+          )}
         </div>
       </main>
     </div>
