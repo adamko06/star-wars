@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Box from '../Box';
 import FilterModal from '../FilterModal';
+import Pagination from '../Pagination';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -12,7 +14,8 @@ const Home = () => {
   };
 
   //Pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.pagination);
+  // const [currentPage, setCurrentPage] = useState(1);
   const [postPerPage, setPostPerPage] = useState(10);
   const [maxPage, setMaxPage] = useState('');
 
@@ -68,7 +71,7 @@ const Home = () => {
             </div>
           )}
 
-          {search == '' && (
+          {/* {search == '' && (
             <div className='box_pagination'>
               <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage <= 1}>
                 ←
@@ -78,7 +81,8 @@ const Home = () => {
                 →
               </button>
             </div>
-          )}
+          )} */}
+          {search == '' && <Pagination />}
         </div>
       </main>
     </div>
