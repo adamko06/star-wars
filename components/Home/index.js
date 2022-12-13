@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
-import imgs from '../../config/imgs';
-import Link from 'next/link';
 import Box from '../Box';
-
-import axios from 'axios';
+import FilterModal from '../FilterModal';
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -32,17 +29,14 @@ const Home = () => {
     const allData = Promise.all([fetchReq1, fetchReq2, fetchReq3]);
 
     allData.then((res) => {
-      const [res1, res2, res3] = res;
       const allFetch = [];
       res.forEach((item) => {
         allFetch.push(...item.results);
       });
       setContent(allFetch);
-      setTimeout(() => {
-        console.log(content);
-      }, '6000');
+      // setTimeout(() => {}, '6000');
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
 
   return (
@@ -50,10 +44,12 @@ const Home = () => {
       <main>
         <div className='container'>
           <div className='toolbar'>
-            <form>
-              <input placeholder='Filter' />
+            <div>
+              <FilterModal />
+            </div>
+            <div>
               <input placeholder='Search by Name' type='text' onChange={handleChange} value={search} />
-            </form>
+            </div>
           </div>
         </div>
         <div className='container'>

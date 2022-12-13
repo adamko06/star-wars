@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { wrapper, store } from '../redux/store';
 
 import '../styles/styles.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
