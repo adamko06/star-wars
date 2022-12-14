@@ -1,11 +1,17 @@
-export const increment = () => {
+export const previousPage = () => {
   return {
-    type: 'INCREMENT',
+    type: 'PREVIOUSPAGE',
   };
 };
 
-export const decrement = () => {
+export const nextPage = () => {
   return {
-    type: 'DECREMENT',
+    type: 'NEXTPAGE',
+  };
+};
+
+export const defaultPage = () => {
+  return {
+    type: 'DEFAULTPAGE',
   };
 };

@@ -1,0 +1,24 @@
+.pagination {
+  padding: 20px 1% 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & button {
+    width: 50px;
+    font-size: 20px;
+    color: $white;
+    background: $black;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    &:disabled {
+      background-color: $black_2;
+      cursor: unset;
+    }
+  }
+  & div {
+    margin: 0 10px;
+  }
+}

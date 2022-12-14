@@ -6,7 +6,7 @@ const Fav = () => {
   return (
     <>
       <Favorites />
-      <Counter />
+      {/* <Counter /> */}
       <Chars />
     </>
   );

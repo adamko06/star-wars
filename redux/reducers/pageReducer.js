@@ -1,11 +1,11 @@
 const pageReducer = (state = 1, action) => {
-  console.log(state);
-
   switch (action.type) {
-    case 'INCREMENT':
+    case 'NEXTPAGE':
       return state + 1;
-    case 'DECREMENT':
+    case 'PREVIOUSPAGE':
       return state - 1;
+    case 'DEFAULTPAGE':
+      return 1;
     default:
       return state;
   }
