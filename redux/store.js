@@ -6,7 +6,6 @@ import rootReducer from './reducers';
 
 // initial states here
 const initalState = [];
-console.log(initalState);
 
 // middleware
 const middleware = [thunk];

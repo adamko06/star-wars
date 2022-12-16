@@ -9,9 +9,6 @@ const Chars = () => {
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
-  console.log(content);
-  console.log(favorites.favorites);
-
   // const characters = () => {
   //   dispatch(onLoadChars());
   // };

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import imgs from '../../config/imgs';
 
 const Box = (props) => {
-  console.log(props.index);
   return (
     <div className='box_item' key={props.index > 10}>
       <Link href={`hero/${props.index > 16 ? props.index + 2 : props.index + 1}`}>

@@ -5,7 +5,6 @@ const initialState = {
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADDHERO':
-      console.log('addHero');
       return { favorites: state.favorites.concat(action.favorite) };
     case 'REMOVEHERO':
       return state - 1;

@@ -38,7 +38,7 @@ const Detail = () => {
                   }
                 />
                 {/* <h3>{favorites}</h3> */}
-                <button onClick={() => dispatch(addHero(content, heroIndex))}>Increase</button>
+                <button onClick={() => dispatch(addHero(content, heroIndex))}>Add To Favorites</button>
                 <button onClick={() => dispatch(resetHeroes())}>Reset</button>
                 <button onClick={() => dispatch(removeHero())}>Decrease</button>
               </div>
