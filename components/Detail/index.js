@@ -2,11 +2,14 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import imgs from '../../config/imgs';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { removeHero, addHero, resetHeroes } from '../../redux/actions/favoriteAction';
+
 const Detail = () => {
   const router = useRouter();
 
   const [content, setContent] = useState(null);
-
+  const heroIndex = parseInt(router.query.heroId);
   useEffect(() => {
     fetch(`https://swapi.dev/api/people/${router.query.heroId}`)
       .then((res) => res.json())
@@ -15,6 +18,10 @@ const Detail = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  const favorites = useSelector((state) => state.favorites);
+  console.log(favorites);
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -30,6 +37,10 @@ const Detail = () => {
                     'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
                   }
                 />
+                {/* <h3>{favorites}</h3> */}
+                <button onClick={() => dispatch(addHero(content, heroIndex))}>Add To Favorites</button>
+                <button onClick={() => dispatch(resetHeroes())}>Reset</button>
+                <button onClick={() => dispatch(removeHero())}>Decrease</button>
               </div>
               <div className='box_detail_item'>
                 <ul>

@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
 import Box from '../Box';
 import FilterModal from '../FilterModal';
+import Pagination from '../Pagination';
+import { useSelector, useDispatch } from 'react-redux';
+import { onLoadChars } from '../../redux/actions/charAction';
 
 const Home = () => {
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [content, setContent] = useState(null);
   const [search, setSearch] = useState('');
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
 
+  //Content
+  const content = useSelector((state) => state.chars);
+  const dispatch = useDispatch();
+
   //Pagination
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector((state) => state.pagination);
   const [postPerPage, setPostPerPage] = useState(10);
   const [maxPage, setMaxPage] = useState('');
 
@@ -22,21 +27,8 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    const fetchReq1 = fetch(`https://swapi.dev/api/people/?page=1`).then((res) => res.json());
-    const fetchReq2 = fetch(`https://swapi.dev/api/people/?page=2`).then((res) => res.json());
-    const fetchReq3 = fetch(`https://swapi.dev/api/people/?page=3`).then((res) => res.json());
-
-    const allData = Promise.all([fetchReq1, fetchReq2, fetchReq3]);
-
-    allData.then((res) => {
-      const allFetch = [];
-      res.forEach((item) => {
-        allFetch.push(...item.results);
-      });
-      setContent(allFetch);
-      // setTimeout(() => {}, '6000');
-      setLoading(false);
-    });
+    dispatch(onLoadChars());
+    setLoading(false);
   }, []);
 
   return (
@@ -67,18 +59,7 @@ const Home = () => {
                 })}
             </div>
           )}
-
-          {search == '' && (
-            <div className='box_pagination'>
-              <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage <= 1}>
-                ←
-              </button>
-              <div>{currentPage}</div>
-              <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage >= 3}>
-                →
-              </button>
-            </div>
-          )}
+          {search == '' && <Pagination />}
         </div>
       </main>
     </div>
