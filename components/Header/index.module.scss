@@ -1,0 +1,15 @@
+.header {
+  &_badge {
+    position: absolute;
+    top: 9px;
+    font-size: 11px;
+    background: #ffc704;
+    color: black;
+    border-radius: 10px;
+    min-width: 20px;
+    min-height: 20px;
+    margin: auto;
+    text-align: center;
+    padding: 2px 0px 0px 2px;
+  }
+}
