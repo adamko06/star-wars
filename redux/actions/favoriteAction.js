@@ -5,9 +5,10 @@ export const addHero = (hero, heroIndex) => {
   };
 };
 
-export const removeHero = () => {
+export const removeHero = (hero, heroIndex) => {
   return {
     type: 'REMOVEHERO',
+    favorite: { ...hero, heroIndex },
   };
 };
 

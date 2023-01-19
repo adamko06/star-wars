@@ -20,7 +20,6 @@ const Detail = () => {
   }, []);
 
   const favorites = useSelector((state) => state.favorites);
-  console.log(favorites);
   const dispatch = useDispatch();
 
   return (
@@ -39,8 +38,8 @@ const Detail = () => {
                 />
                 {/* <h3>{favorites}</h3> */}
                 <button onClick={() => dispatch(addHero(content, heroIndex))}>Add To Favorites</button>
-                <button onClick={() => dispatch(resetHeroes())}>Reset</button>
-                <button onClick={() => dispatch(removeHero())}>Decrease</button>
+                <button onClick={() => dispatch(resetHeroes())}>Reset Favorites</button>
+                <button onClick={() => dispatch(removeHero(content, heroIndex))}>Remove From Favorites</button>
               </div>
               <div className='box_detail_item'>
                 <ul>

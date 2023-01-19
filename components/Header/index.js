@@ -1,9 +1,18 @@
 import Link from 'next/link';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { defaultPage } from '../../redux/actions/pageAction';
 
-const Header = () => {
+import styles from './index.module.scss';
+
+const Header = (props) => {
   const dispatch = useDispatch();
+
+  const favorites = useSelector((state) => state.favorites);
+  const numberOfHereos = favorites.favorites.length;
+  setTimeout(() => {
+    console.log('This will run after 1 second!');
+  }, 1000);
+
   return (
     <header>
       <div className='container'>
@@ -14,9 +23,20 @@ const Header = () => {
             </a>
           </Link>
           <div className='nav_item'>
-            <Link href='/favorites'>
-              <a>Favorites</a>
-            </Link>
+            {props.lyrics ? (
+              <Link href='/favorites'>
+                {' '}
+                {/* prozatím */}
+                <a>Login</a>
+              </Link>
+            ) : (
+              <Link href='/favorites'>
+                <a>
+                  Favorites
+                  {numberOfHereos > 0 ? <span className={styles.header_badge}>{numberOfHereos}</span> : null}
+                </a>
+              </Link>
+            )}
           </div>
         </div>
       </div>

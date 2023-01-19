@@ -7,6 +7,7 @@ import Box from '../Box';
 const Chars = () => {
   const content = useSelector((state) => state.chars);
   const favorites = useSelector((state) => state.favorites);
+  console.log("favorites",favorites);
   const dispatch = useDispatch();
 
   // const characters = () => {
