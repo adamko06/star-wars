@@ -33,4 +33,15 @@ export default {
   'Wicket Systri Warrick': 'http://pm1.narvii.com/6270/e538b68a8d606007c2209ed79640d30a31d122ce_00.jpg',
   'Nien Nunb':
     'https://images.immediate.co.uk/production/volatile/sites/3/2020/01/Screen-Shot-2020-01-11-at-12.52.38-f33ecaf.png',
+  'Qui-Gon Jinn': 'https://neosabers.com/wp-content/uploads/2022/08/Qui-Gon-Jinn.png',
+  'Nute Gunray': 'https://pbs.twimg.com/profile_images/1087562005924306945/ft9qDBZV_400x400.jpg',
+  'Finis Valorum': 'https://pbs.twimg.com/profile_images/1273714675071561734/LOWwnK9D_400x400.jpg',
+  'Padmé Amidala': 'https://i.redd.it/8coglozi7e181.jpg',
+  'Jar Jar Binks':
+    'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/07/24/17/Jar-Jar-Binks.jpg?quality=75&width=982&height=726&auto=webp',
+  'Roos Tarpals': 'https://imperialtalker.files.wordpress.com/2015/08/roos_tarpals.jpg',
+  'Rugor Nass': 'https://i.pinimg.com/originals/f2/ed/a2/f2eda28291597c0fd06db49d6628059e.jpg',
+  'Ric Olié': 'https://comicvine.gamespot.com/a/uploads/scale_medium/5/51078/1159059-ric_olie.jpg',
+  Watto: 'https://preview.redd.it/x8khygd3g1541.png?width=400&format=png&auto=webp&s=ce8ca70ab7ba09c96db791b4884b1507a43827e8',
+  Sebulba: 'https://i1.sndcdn.com/artworks-dJcvDTeCpfoym8ds-ind7Ig-t500x500.jpg',
 };

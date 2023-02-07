@@ -3,7 +3,12 @@ import { useState, useEffect } from 'react';
 import imgs from '../../config/imgs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { removeHero, addHero, resetHeroes } from '../../redux/actions/favoriteAction';
+import { removeHero, addHero } from '../../redux/actions/favoriteAction';
+
+import SideChoose from '../SideChoose';
+import Button from 'react-bootstrap/Button';
+
+import styles from './index.module.scss';
 
 const Detail = () => {
   const router = useRouter();
@@ -11,37 +16,60 @@ const Detail = () => {
   const [content, setContent] = useState(null);
   const heroIndex = parseInt(router.query.heroId);
   useEffect(() => {
-    fetch(`https://swapi.dev/api/people/${router.query.heroId}`)
-      .then((res) => res.json())
-      .then((newContent) => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(`https://swapi.dev/api/people/${router.query.heroId}`);
+        const newContent = await res.json();
         setContent(newContent);
-      })
-      .catch((err) => console.log(err));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const favorites = useSelector((state) => state.favorites);
+
+  const isFavorite = favorites.favorites?.some((hero) => hero.heroIndex === heroIndex);
+
+  const actualHero = favorites.favorites?.find((hero) => hero.heroIndex === heroIndex);
+  const actualHeroSide = !actualHero?.side ? 'noSide' : actualHero.side;
+
   const dispatch = useDispatch();
 
   return (
     <div>
       {content && (
         <div className='container'>
-          <div className='box_detail_container'>
-            <h1>{content.name}</h1>
-            <div className='box_detail'>
-              <div className='box_detail_item'>
+          <div className={styles.hero}>
+            <div className={styles.hero_detail}>
+              <div className={styles.hero_detail_item}>
                 <img
+                  className={`${
+                    actualHeroSide === 'light' ? styles.hero_light : actualHeroSide === 'dark' ? styles.hero_dark : ''
+                  }`}
                   src={
                     imgs[content.name] ||
                     'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
                   }
                 />
-                {/* <h3>{favorites}</h3> */}
-                <button onClick={() => dispatch(addHero(content, heroIndex))}>Add To Favorites</button>
-                <button onClick={() => dispatch(resetHeroes())}>Reset Favorites</button>
-                <button onClick={() => dispatch(removeHero(content, heroIndex))}>Remove From Favorites</button>
+
+                <div className={'mt-5 text-center'}>
+                  {!isFavorite ? (
+                    <Button variant='primary' onClick={() => dispatch(addHero(content, heroIndex))}>
+                      Add to Favorites
+                    </Button>
+                  ) : (
+                    <Button variant='primary' onClick={() => dispatch(removeHero(content, heroIndex))}>
+                      Remove from Favorites
+                    </Button>
+                  )}
+                  {isFavorite && <SideChoose content={content} heroIndex={heroIndex} actualHeroSide={actualHeroSide} />}
+                </div>
               </div>
-              <div className='box_detail_item'>
+              <div className={styles.hero_detail_item}>
+                <h1>{content.name}</h1>
                 <ul>
                   <li>Gender: {content.gender}</li>
                   <li>Height: {content.height}</li>

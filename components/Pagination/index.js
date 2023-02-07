@@ -14,7 +14,7 @@ const Pagination = () => {
         ←
       </button>
       <div>{currentPage}</div>
-      <button onClick={() => dispatch(nextPage())} disabled={currentPage >= 3}>
+      <button onClick={() => dispatch(nextPage())} disabled={currentPage >= 4}>
         →
       </button>
     </div>

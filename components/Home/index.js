@@ -5,6 +5,8 @@ import Pagination from '../Pagination';
 import { useSelector, useDispatch } from 'react-redux';
 import { onLoadChars } from '../../redux/actions/charAction';
 
+import styles from './index.module.scss';
+
 const Home = () => {
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
@@ -19,7 +21,6 @@ const Home = () => {
   //Pagination
   const currentPage = useSelector((state) => state.pagination);
   const [postPerPage, setPostPerPage] = useState(10);
-  const [maxPage, setMaxPage] = useState('');
 
   //Get current posts
   const indexOfLastPost = currentPage * postPerPage;
@@ -35,10 +36,11 @@ const Home = () => {
     <div>
       <main>
         <div className='container'>
-          <div className='toolbar'>
-            <div>
+          <div className={styles.home_toolbar}>
+            <h1 className='m-auto'>Choose Your Favorite Heroes</h1>
+            {/* <div>
               <FilterModal />
-            </div>
+            </div> */}
             <div>
               <input placeholder='Search by Name' type='text' onChange={handleChange} value={search} />
             </div>
@@ -48,7 +50,7 @@ const Home = () => {
           {loading ? (
             <h2>Loading...</h2>
           ) : (
-            <div className='box'>
+            <div className={styles.home}>
               {content &&
                 content.map((item, index) => {
                   if (search == '' && index >= indexOfFirstPost && index < indexOfLastPost) {

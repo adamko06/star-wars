@@ -4,13 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { useState } from 'react';
 
 const index = () => {
-  const [observer, setObserver] = useState(false);
-
   const { ref: lastParaghraphRef, inView: lastParaghraphIsVisible } = useInView({ triggerOnce: true });
-
-  // lastParaghraphIsVisible && setObserver(true);
-  console.log(lastParaghraphIsVisible);
-  // console.log('observer', observer);
 
   return (
     <div className={styles.lyrics}>

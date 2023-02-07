@@ -8,35 +8,32 @@ const Header = (props) => {
   const dispatch = useDispatch();
 
   const favorites = useSelector((state) => state.favorites);
-  const numberOfHereos = favorites.favorites.length;
-  setTimeout(() => {
-    console.log('This will run after 1 second!');
-  }, 1000);
+  const numberOfHereos = favorites.favorites?.length;
 
   return (
     <header>
       <div className='container'>
-        <div className='nav'>
+        <div className={styles.header_nav}>
           <Link href='/'>
-            <a className='logo' onClick={() => dispatch(defaultPage())}>
+            <a className={styles.header_logo} onClick={() => dispatch(defaultPage())}>
               <img alt='starwars' src='logo.svg' />
             </a>
           </Link>
-          <div className='nav_item'>
+          <div className={styles.header_item}>
             {props.lyrics ? (
-              <Link href='/favorites'>
+              <Link href='/lyrics'>
                 {' '}
-                {/* prozatím */}
+                {/* forNow */}
                 <a>Login</a>
               </Link>
-            ) : (
+            ) : numberOfHereos > 0 ? (
               <Link href='/favorites'>
                 <a>
                   Favorites
-                  {numberOfHereos > 0 ? <span className={styles.header_badge}>{numberOfHereos}</span> : null}
+                  <span className={styles.header_badge}>{numberOfHereos}</span>
                 </a>
               </Link>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

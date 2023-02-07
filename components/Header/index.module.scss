@@ -1,4 +1,28 @@
+@import '/styles/variables';
+
 .header {
+  &_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+
+    & a {
+      color: $white;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      &:hover {
+        transition: 0.2s;
+        color: $secondary !important;
+      }
+    }
+  }
+  &_logo img {
+    width: 100px;
+    display: block;
+  }
   &_badge {
     position: absolute;
     top: 9px;
@@ -11,5 +35,10 @@
     margin: auto;
     text-align: center;
     padding: 2px 0px 0px 2px;
+  }
+  @media (max-width: $bp-sm) {
+    &_item {
+      margin-right: 14px;
+    }
   }
 }

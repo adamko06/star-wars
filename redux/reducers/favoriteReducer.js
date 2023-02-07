@@ -1,14 +1,15 @@
-import Swal from 'sweetalert2';
 import { swalWrapper } from '../../helpers/mainHelper.js';
 
 const initialState = {
   favorites: [],
 };
 
+let favObtained;
+
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADDHERO':
-      const favObtained = state.favorites.find((fav) => fav.name === action.favorite.name);
+      favObtained = state.favorites?.find((fav) => fav.name === action.favorite.name);
       if (!favObtained) {
         swalWrapper('success', 'Hero Succesfully Added');
         return { favorites: state.favorites.concat(action.favorite) };
@@ -21,22 +22,16 @@ const favoriteReducer = (state = initialState, action) => {
       const filtered = state.favorites.filter((fav) => fav.name !== action.favorite.name);
       swalWrapper('success', 'Hero Succesfully Removed');
       return { favorites: filtered };
-    // return state - 1;
 
     case 'RESETHEROES':
-      // alert('reset');
-      // return [];
-      // /*reset ?
-      const filtered2 = state.favorites.filter((fav) => {
-        console.log('favoriiiiit: ', fav);
-        console.log('favoriiiiit name: ', fav.name);
-        console.log('favoriiiiit action.favorite: ', action.favorite.name);
-        console.log('favoriiiiit action: ', action);
-        fav.name !== action.favorite.name;
+      swalWrapper('success', 'Fvorites Succesfully Reseted');
+      return { favorites: [] };
+
+    case 'ADDHEROSIDE':
+      const updatedFavorites = state.favorites.map((hero) => {
+        return hero.heroIndex === action.favorite.heroIndex ? { ...hero, side: action.favorite.side } : { ...hero };
       });
-      console.log('filtered: sdijnfsjkdnfisdnf', filtered2);
-      return { favorites: filtered2 };
-    // */
+      return { favorites: updatedFavorites };
     default:
       return state;
   }
