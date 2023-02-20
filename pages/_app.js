@@ -1,62 +1,52 @@
-/* original */
-
-import Head from 'next/head';
-import Header from '../components/Header/index.js';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
 // redux
 import { Provider } from 'react-redux';
 import { wrapper, store } from '../redux/store';
 
-import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Header from '../components/Header/index.js';
+import Footer from '../components/Footer/index.js';
+
+import { SSRProvider } from '@react-aria/ssr';
 
 import '../styles/styles.scss';
 import '../styles/alert.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useRouter } from 'next/router';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5002/graphql',
+  cache: new InMemoryCache(),
+});
+
 const MyApp = ({ Component, pageProps }) => {
+  const router = useRouter();
+
+  if (typeof window !== 'undefined') {
+    if (router.pathname === '/') {
+      if (!localStorage.getItem('isLoaded')) {
+        localStorage.setItem('isLoaded', true);
+        router.replace('/lyrics');
+      }
+    }
+  }
+
   return (
-    <Provider store={store}>
-      <Head>
-        <title>Star Wars</title>
-      </Head>
-      {/* {useRouter().route === '/lyrics' ? <Header lyrics /> : <Header />} */}
-      <Header></Header>
-      <Component {...pageProps} />
-    </Provider>
+    <SSRProvider>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <Head>
+            <title>Star Wars</title>
+          </Head>
+          <Header />
+            <Component {...pageProps} />
+          <Footer />
+        </ApolloProvider>
+      </Provider>
+    </SSRProvider>
   );
 };
 
 export default wrapper.withRedux(MyApp);
-
-/* redux-persist 
-
-import Head from 'next/head';
-import Header from '../components/Header/index.js';
-
-// redux
-import { Provider } from 'react-redux';
-import { persistor, store } from '../redux/store';
-import { PersistGate } from 'redux-persist/integration/react';
-
-import { useRouter } from 'next/router';
-
-import '../styles/styles.scss';
-import '../styles/alert.scss';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const MyApp = ({ Component, pageProps }) => {
-  return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Head>
-          <title>Star Wars</title>
-        </Head>
-        {useRouter().route === '/lyrics' ? <Header lyrics /> : <Header />}
-        <Component {...pageProps} />
-      </PersistGate>
-    </Provider>
-  );
-};
-
-export default MyApp;
-*/

@@ -3,7 +3,12 @@ import { useState, useEffect } from 'react';
 import imgs from '../../config/imgs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { removeHero, addHero } from '../../redux/actions/favoriteAction';
+import { removeHero, addHero } from '../../redux/actions/heroesAction';
+
+import { GET_HERO } from '../../graphql/quieries/heroQueries';
+import { ADD_FAVORITE, REMOVE_FAVORITE } from '../../graphql/mutations/heroMutations';
+import { useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 import SideChoose from '../SideChoose';
 import Button from 'react-bootstrap/Button';
@@ -11,35 +16,47 @@ import Button from 'react-bootstrap/Button';
 import styles from './index.module.scss';
 
 const Detail = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
 
-  const [content, setContent] = useState(null);
-  const heroIndex = parseInt(router.query.heroId);
+  const heroIndex = router.query.heroId;
+  const heroId = router.query.heroId;
+
+  // GraphQL
+  const { loading, error, data } = useQuery(GET_HERO, { variables: { id: heroId }, skip: !heroId });
+
+  let content = data?.hero;
+
+  const reduxFavorites = useSelector((state) => state.heroes);
+
+  const [favorites, setFavorites] = useState();
+
+  const actualHero = favorites?.find((hero) => hero.id === heroId);
+  const actualHeroSide = actualHero?.side;
+  const isFavorite = actualHero?.isFavorite;
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`https://swapi.dev/api/people/${router.query.heroId}`);
-        const newContent = await res.json();
-        setContent(newContent);
-      } catch (err) {
-        console.error(err);
-      }
-    };
+    setFavorites(reduxFavorites);
+  }, [reduxFavorites]);
 
-    fetchData();
-  }, []);
+  const [addFavorite] = useMutation(ADD_FAVORITE, {
+    variables: { id: heroId, isFavorite: true },
+    onCompleted: (data) => {
+      dispatch(addHero(data.addFavorite));
+    },
+  });
 
-  const favorites = useSelector((state) => state.favorites);
+  const [removeFavorite] = useMutation(REMOVE_FAVORITE, {
+    variables: { id: heroId, isFavorite: false },
+    onCompleted: (data) => {
+      dispatch(removeHero(data.removeFavorite.id));
+    },
+  });
 
-  const isFavorite = favorites.favorites?.some((hero) => hero.heroIndex === heroIndex);
-
-  const actualHero = favorites.favorites?.find((hero) => hero.heroIndex === heroIndex);
-  const actualHeroSide = !actualHero?.side ? 'noSide' : actualHero.side;
-
-  const dispatch = useDispatch();
+  const sortOrder = [4, 5, 6, 1, 2, 3];
 
   return (
-    <div>
+    <main>
       {content && (
         <div className='container'>
           <div className={styles.hero}>
@@ -54,35 +71,75 @@ const Detail = () => {
                     'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
                   }
                 />
-
                 <div className={'mt-5 text-center'}>
                   {!isFavorite ? (
-                    <Button variant='primary' onClick={() => dispatch(addHero(content, heroIndex))}>
+                    <Button variant='primary' onClick={() => addFavorite()}>
                       Add to Favorites
                     </Button>
                   ) : (
-                    <Button variant='primary' onClick={() => dispatch(removeHero(content, heroIndex))}>
+                    <Button variant='primary' onClick={() => removeFavorite()}>
                       Remove from Favorites
                     </Button>
                   )}
-                  {isFavorite && <SideChoose content={content} heroIndex={heroIndex} actualHeroSide={actualHeroSide} />}
+                  {isFavorite && <SideChoose content={content} heroId={heroId} actualHeroSide={actualHeroSide} />}
                 </div>
               </div>
               <div className={styles.hero_detail_item}>
-                <h1>{content.name}</h1>
+                <h2>{content.name}</h2>
                 <ul>
-                  <li>Gender: {content.gender}</li>
-                  <li>Height: {content.height}</li>
-                  <li>Mass: {content.mass}</li>
-                  <li>Hair: {content.hair_color}</li>
-                  <li>Skin: {content.skin_color}</li>
+                  <li>
+                    <b>Gender:</b> {content.gender}
+                  </li>
+                  <li>
+                    <b>Height:</b> {content.height} cm
+                  </li>
+                  <li>
+                    <b>Mass:</b> {content.mass} kg
+                  </li>
+                  <li>
+                    <b>Hair:</b> {content.hair_color}
+                  </li>
+                  <li>
+                    <b>Skin:</b> {content.skin_color}
+                  </li>
+                  <br />
+                  <b>Films in which {content.name} has appeared:</b>
+                  {sortOrder.map((episodeIndex) => {
+                    const url = `https://swapi.dev/api/films/${episodeIndex}/`;
+                    const episodeNumber = content.films
+                      .find((film) => film === url)
+                      ?.replace('https://swapi.dev/api/films/', '')
+                      .replace('/', '');
+                    let episode;
+                    switch (episodeNumber) {
+                      case '4':
+                        episode = 'Episode I - The Phantom Menace';
+                        break;
+                      case '5':
+                        episode = 'Episode II - Attack of the Clones';
+                        break;
+                      case '6':
+                        episode = 'Episode III - Revenge of the Sith';
+                        break;
+                      case '1':
+                        episode = 'Episode IV - A New Hope';
+                        break;
+                      case '2':
+                        episode = 'Episode V - The Empire Strikes Back';
+                        break;
+                      case '3':
+                        episode = 'Episode VI - Return of the Jedi';
+                        break;
+                    }
+                    return <li key={episodeIndex}>{episode}</li>;
+                  })}
                 </ul>
               </div>
             </div>
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 };
 

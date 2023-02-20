@@ -13,9 +13,17 @@ header {
   background-color: $black;
 }
 .container {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: 0 15px;
+  max-width: 1320px !important;
+  margin: 0 auto !important;
+  padding: 0 15px !important;
+}
+
+b {
+  letter-spacing: 2px;
+}
+
+h1 {
+  text-shadow: 0px 0px 20px rgb(0 0 0);
 }
 
 .btn {
@@ -31,6 +39,12 @@ header {
   }
 }
 
+input,
+.btn {
+  border-radius: $br-btn !important;
+  padding: 10px 28px !important;
+}
+
 input {
   &:focus-visible {
     outline: solid 1px $secondary;
@@ -43,8 +57,25 @@ input {
   }
 }
 
+// Dropdown
+.dropdown-menu {
+  border-radius: $br-md !important;
+}
+
+.dropdown-item {
+  &:active {
+    color: black !important;
+    background-color: $secondary !important;
+  }
+}
+
+// Mobile
 @media (max-width: $bp-sm) {
   h1 {
-    font-size: 22px !important;
+    font-size: 2.25rem !important;
+  }
+
+  .container {
+    padding: 0 18px !important;
   }
 }

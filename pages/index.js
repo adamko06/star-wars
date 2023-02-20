@@ -1,7 +1,13 @@
 import Home from '../components/Home/index';
+import SetHeroesToDB from '../components/SetHeroesToDB/index';
 
 const HomePage = () => {
-  return <Home />;
+  return (
+    <>
+      {/* <SetHeroesToDB /> */}
+      <Home />
+    </>
+  );
 };
 
 export default HomePage;
