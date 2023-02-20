@@ -25,7 +25,7 @@ export default {
   'IG-88': 'https://preview.redd.it/6d3x6naan7p81.jpg?width=593&format=pjpg&auto=webp&s=d1901713b4a1c6aa7735342f6f74b3fd0280ebdd',
   Bossk:
     'https://discourse.disneyheroesgame.com/uploads/default/optimized/3X/8/3/832bfca35d687e578f0a03375e250a1bc2e81856_2_682x1024.jpeg',
-  'Lando Calrissian': 'https://starwarsblog.starwars.com/wp-content/uploads/2022/02/insider-heroes-lando-headshot.jpg',
+  'Lando Calrissian': 'https://i.pinimg.com/736x/0e/0a/39/0e0a39e8a3a231befb65902a2e9e054d.jpg',
   Lobot: 'https://i.pinimg.com/originals/aa/7d/4e/aa7d4e4d6b906fd902e7075f14a4e119.jpg',
   Ackbar: 'https://pbs.twimg.com/profile_images/508629227852537856/LtAUfq3u_400x400.jpeg',
   'Mon Mothma': 'https://i.pinimg.com/564x/08/68/f3/0868f39193080aeabe94e2e18e34319b.jpg',
@@ -44,4 +44,14 @@ export default {
   'Ric Olié': 'https://comicvine.gamespot.com/a/uploads/scale_medium/5/51078/1159059-ric_olie.jpg',
   Watto: 'https://preview.redd.it/x8khygd3g1541.png?width=400&format=png&auto=webp&s=ce8ca70ab7ba09c96db791b4884b1507a43827e8',
   Sebulba: 'https://i1.sndcdn.com/artworks-dJcvDTeCpfoym8ds-ind7Ig-t500x500.jpg',
+  'Shmi Skywalker': '/heroes/Shmi_Skywalker.jpg',
+  'Dud Bolt': 'https://live.staticflickr.com/4189/34620862606_6b154b90cc_b.jpg',
+  'Quarsh Panaka': '/heroes/Quarsh_Panaka.jpg',
+  Gasgano: '/heroes/Gasgano.jpg',
+  'Ben Quadinaros': '/heroes/Ben_Quadinaros.jpg',
+  'Ayla Secura': '/heroes/Ayla_Secura.jpg',
+  'Mace Windu': 'https://blacksci-fi.com/wp-content/uploads/2022/05/Mace-Windu.jpg',
+  'Ratts Tyerel': 'https://rpggamer.org/uploaded_images/RattsHS.jpg',
+  'Darth Maul': '/heroes/Darth_Maul.jpg',
+  'Bib Fortuna': '/heroes/Bib_Fortuna.jpg',
 };

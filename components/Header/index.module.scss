@@ -18,6 +18,9 @@
         color: $secondary !important;
       }
     }
+    & div:last-child {
+      margin-right: 14px;
+    }
   }
   &_logo img {
     width: 100px;
@@ -27,18 +30,13 @@
     position: absolute;
     top: 9px;
     font-size: 11px;
-    background: #ffc704;
+    background: $secondary;
     color: black;
-    border-radius: 10px;
-    min-width: 20px;
-    min-height: 20px;
+    border-radius: $br-btn;
+    min-width: 25px;
+    min-height: 25px;
     margin: auto;
     text-align: center;
-    padding: 2px 0px 0px 2px;
-  }
-  @media (max-width: $bp-sm) {
-    &_item {
-      margin-right: 14px;
-    }
+    padding: 5px 0px 0px 2px;
   }
 }

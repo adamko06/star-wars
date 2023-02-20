@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
-import charReducer from './reducers/charReducer';
+import filterByMovieReducer from './reducers/filterByMovieReducer';
 import pageReducer from './reducers/pageReducer';
-import favoriteReducer from './reducers/favoriteReducer';
+import heroesReducer from './reducers/heroesReducer';
 
 // COMBINED REDUCERS
 const reducers = combineReducers({
-  chars: charReducer,
+  heroes: heroesReducer,
+  filterByMovie: filterByMovieReducer,
   pagination: pageReducer,
-  favorites: favoriteReducer,
 });
 
 export default reducers;

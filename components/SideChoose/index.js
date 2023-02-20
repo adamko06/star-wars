@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addHeroSide } from '../../redux/actions/favoriteAction';
+import { addHeroSide } from '../../redux/actions/heroesAction';
+
+import { useMutation } from '@apollo/client';
+import { CHOOSE_FAVORITE_SIDE } from '../../graphql/mutations/heroMutations';
 
 import styles from './index.module.scss';
 
-const SideChoose = (props) => {
-  const { heroIndex, actualHeroSide } = props;
-
+const SideChoose = ({ heroId, actualHeroSide }) => {
   const [side, setSide] = useState(actualHeroSide);
 
   const dispatch = useDispatch();
+
+  const [chooseFavoriteSide] = useMutation(CHOOSE_FAVORITE_SIDE, {
+    onCompleted: () => {
+      dispatch(addHeroSide(heroId, side));
+    },
+  });
+
   const chooseSide = (side) => {
     setSide(side);
-    dispatch(addHeroSide(heroIndex, side));
+    chooseFavoriteSide({ variables: { id: heroId, side: side } });
   };
 
   return (
