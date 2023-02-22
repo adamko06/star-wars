@@ -23,7 +23,7 @@
     }
   }
   &_logo img {
-    width: 100px;
+    width: 110px;
     display: block;
   }
   &_badge {
@@ -38,5 +38,10 @@
     margin: auto;
     text-align: center;
     padding: 5px 0px 0px 2px;
+  }
+  @media (max-width: $bp-sm) {
+    &_logo img{
+      width: 100px;
+    }
   }
 }

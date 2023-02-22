@@ -8,7 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 50px 1% 20px 0;
+    padding: 0 1%;
 
     & div {
       width: 233px;
@@ -36,10 +36,10 @@
     }
   }
   @media (max-width: $bp-sm) {
-    margin-bottom: 30px;
     &_toolbar {
       flex-wrap: wrap;
       justify-content: center;
+      margin-bottom: 30px;
       & div {
         width: 233px;
         margin-right: 0px;

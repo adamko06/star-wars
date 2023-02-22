@@ -1,7 +1,6 @@
 @import '/styles/variables';
 
 .hero {
-  padding-top: 50px;
   &_detail {
     display: flex;
     &_item {
@@ -50,21 +49,18 @@
   &_light {
     transition: 1.5s;
     scale: 1.02;
-    box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255), 0 0 25px rgb(0, 115, 255) !important;
-    -webkit-box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255),
-      0 0 25px rgb(0, 115, 255) !important;
-    -moz-box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255),
-      0 0 25px rgb(0, 115, 255) !important;
+    box-shadow: $lightSideShadow;
+    -webkit-box-shadow: $lightSideShadow;
+    -moz-box-shadow: $lightSideShadow;
   }
   &_dark {
     scale: 1.02;
     transition: 1.5s;
-    box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide !important;
-    -webkit-box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide !important;
-    -moz-box-shadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide !important;
+    box-shadow: $darkSideShadow;
+    -webkit-box-shadow: $darkSideShadow;
+    -moz-box-shadow: $darkSideShadow;
   }
   @media (max-width: $bp-sm) {
-    padding-top: 20px;
     &_detail {
       flex-wrap: wrap;
       &_item {

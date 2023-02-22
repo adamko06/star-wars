@@ -16,6 +16,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useRouter } from 'next/router';
 
+import { useEffect, useRef, useState } from 'react';
+
 const client = new ApolloClient({
   uri: 'http://localhost:5002/graphql',
   cache: new InMemoryCache(),
@@ -32,6 +34,20 @@ const MyApp = ({ Component, pageProps }) => {
       }
     }
   }
+  
+  // mainStyle
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, [headerRef]);
+
+  const mainStyle = {
+    minHeight: `calc(100vh - ${headerHeight}px)`,
+    paddingTop: `${router.pathname !== '/lyrics' ? '50px' : '0px'}`,
+  };
 
   return (
     <SSRProvider>
@@ -40,8 +56,10 @@ const MyApp = ({ Component, pageProps }) => {
           <Head>
             <title>Star Wars</title>
           </Head>
-          <Header />
+          <Header ref={headerRef} />
+          <main style={mainStyle}>
             <Component {...pageProps} />
+          </main>
           <Footer />
         </ApolloProvider>
       </Provider>

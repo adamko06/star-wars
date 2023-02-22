@@ -12,3 +12,6 @@ $bp-sm: 767px;
 
 $br-btn: 30px;
 $br-md: 15px;
+
+$lightSideShadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255), 0 0 25px rgb(0, 115, 255) !important;
+$darkSideShadow: 0 0 15px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide !important;

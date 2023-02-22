@@ -95,11 +95,11 @@
 
   &_lightSide {
     color: $black;
-    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255), 0 0 25px rgb(0, 115, 255);
-    -webkit-box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255),
-      0 0 25px rgb(0, 115, 255);
-    -moz-box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(177, 205, 253), 0 0 15px rgb(0, 115, 255), 0 0 25px rgb(0, 115, 255);
+    box-shadow: $lightSideShadow;
+    -webkit-box-shadow: $lightSideShadow;
+    -moz-box-shadow: $lightSideShadow;
   }
+  
 
   &_neutral {
     background-image: url('../../public/double-handle-lighsaber.png');
@@ -111,8 +111,8 @@
 
   &_darkSide {
     color: $black;
-    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide;
-    -webkit-box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide;
-    -moz-box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px rgb(229, 143, 143), 0 0 15px $darkSide, 0 0 25px $darkSide;
+    box-shadow: $darkSideShadow;
+    -webkit-box-shadow: $darkSideShadow;
+    -moz-box-shadow: $darkSideShadow;
   }
 }

@@ -30,30 +30,28 @@ const Favorites = () => {
   });
 
   return (
-    <main>
-      <div className='container'>
-        <h1 className='text-center mt-5 mb-4'>Your Favorite Heroes</h1>
-        <div className={styles.box}>
-          {favorites &&
-            favorites.map((hero, index) => {
-              return <Box heroes={favorites} hero={hero} key={index} keyIndex={index} />;
-            })}
-        </div>
-        {!isFavoriteEmpty && (
-          <div className='text-center mt-4'>
-            <Button
-              variant='primary'
-              onClick={() => {
-                resetFavorites();
-                router.push('/');
-              }}
-            >
-              Reset Favorites
-            </Button>
-          </div>
-        )}
+    <div className='container'>
+      <h1>Your Favorite Heroes</h1>
+      <div className={styles.box}>
+        {favorites &&
+          favorites.map((hero, index) => {
+            return <Box heroes={favorites} hero={hero} key={index} keyIndex={index} />;
+          })}
       </div>
-    </main>
+      {!isFavoriteEmpty && (
+        <div className='text-center mt-4'>
+          <Button
+            variant='primary'
+            onClick={() => {
+              resetFavorites();
+              router.push('/');
+            }}
+          >
+            Reset Favorites
+          </Button>
+        </div>
+      )}
+    </div>
   );
 };
 

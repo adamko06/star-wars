@@ -7,6 +7,7 @@ import styles from './index.module.scss';
 const Pagination = ({countPage}) => {
   const currentPage = useSelector((state) => state.pagination);
   const dispatch = useDispatch();
+  
   return (
 
     <div className={styles.pagination}>

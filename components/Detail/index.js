@@ -56,7 +56,7 @@ const Detail = () => {
   const sortOrder = [4, 5, 6, 1, 2, 3];
 
   return (
-    <main>
+    <>
       {content && (
         <div className='container'>
           <div className={styles.hero}>
@@ -139,7 +139,7 @@ const Detail = () => {
           </div>
         </div>
       )}
-    </main>
+    </>
   );
 };
 

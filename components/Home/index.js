@@ -9,7 +9,6 @@ import { GET_HEROES } from '../../graphql/quieries/heroQueries';
 import { useQuery } from '@apollo/client';
 
 import styles from './index.module.scss';
-import { router } from 'next/router';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -69,41 +68,35 @@ const Home = () => {
   return (
     <>
       {
-        <div>
-          <main>
-            <div className='container'>
-              <div className={styles.home_toolbar} ref={searchRef}>
-                <h1 className='m-auto'>Choose Your Favorite Heroes</h1>
-                <div className={styles.home_dropdown}>
-                  <FilterDropdown handleClick={filterByMovie} actualSelection={currentEpisode.episode} />
-                </div>
-                <div>
-                  <input placeholder='Search by Name' type='text' onChange={handleChange} value={search} />
-                </div>
-              </div>
+        <div className='container'>
+          <div className={styles.home_toolbar} ref={searchRef}>
+            <h1>Choose Your Favorite Heroes</h1>
+            <div className={styles.home_dropdown}>
+              <FilterDropdown handleClick={filterByMovie} actualSelection={currentEpisode.episode} />
             </div>
-            <div className='container'>
-              <div className={styles.home}>
-                {loading && (
-                  <div className='spinner-border mt-5' role='status'>
-                    <span className='sr-only'></span>
-                  </div>
-                )}
-                {error && <p>Something Went Wrong</p>}
-                {!loading &&
-                  !error &&
-                  heroes &&
-                  heroes.map((hero, index) => {
-                    if (search === '' && index >= indexOfFirstPost && index < indexOfLastPost) {
-                      return <Box heroes={heroes} hero={hero} key={index} keyIndex={index} />;
-                    } else if (search !== '' && hero.name.toLowerCase().includes(search.toLowerCase().trim())) {
-                      return <Box heroes={heroes} hero={hero} key={index} keyIndex={index} />;
-                    }
-                  })}
-              </div>
-              {search == '' && <Pagination countPage={countPage} />}
+            <div>
+              <input placeholder='Search by Name' type='text' onChange={handleChange} value={search} />
             </div>
-          </main>
+          </div>
+          <div className={styles.home}>
+            {loading && (
+              <div className='spinner-border mt-5' role='status'>
+                <span className='sr-only'></span>
+              </div>
+            )}
+            {error && <p>Something Went Wrong</p>}
+            {!loading &&
+              !error &&
+              heroes &&
+              heroes.map((hero, index) => {
+                if (search === '' && index >= indexOfFirstPost && index < indexOfLastPost) {
+                  return <Box heroes={heroes} hero={hero} key={index} keyIndex={index} />;
+                } else if (search !== '' && hero.name.toLowerCase().includes(search.toLowerCase().trim())) {
+                  return <Box heroes={heroes} hero={hero} key={index} keyIndex={index} />;
+                }
+              })}
+          </div>
+          {search == '' && <Pagination countPage={countPage} />}
         </div>
       }
     </>
