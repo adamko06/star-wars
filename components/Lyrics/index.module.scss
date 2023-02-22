@@ -16,6 +16,8 @@
       text-align: justify;
       position: relative;
       animation: scroll 10s linear forwards;
+      -webkit-animation: scroll 10s linear forwards;
+      -moz-animation: scroll 10s linear forwards;
       img {
         margin: 200px 0 30px;
         width: 100%;
@@ -44,6 +46,8 @@
         text-align: justify;
         position: relative;
         animation: scroll 15s linear forwards;
+        -webkit-animation: scroll 15s linear forwards;
+        -moz-animation: scroll 15s linear forwards;
         img {
           margin: 200px 0 30px;
           width: 100%;
@@ -54,7 +58,7 @@
             transform: translateZ(0) rotateX(20deg);
           }
           to {
-            top: -1600px;
+            top: -1100px;
             transform: translateZ(-300px) rotateX(20deg);
           }
         }

@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 const Lyrics = () => {
   const router = useRouter();
   const handleAnimationEnd = (event) => {
-    // if (event.target.classList.contains(styles.lyrics_wrapper_scroll)) {
-    //   router.push('/');
-    // }
+    if (event.target.classList.contains(styles.lyrics_wrapper_scroll)) {
+      router.push('/');
+    }
   };
 
   return (

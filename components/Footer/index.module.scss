@@ -59,6 +59,8 @@
         transform: rotate(-25deg);
         right: 60px;
         animation: lightAnimation 2s $cubic-bezier 0.4s infinite alternate;
+        -webkit-animation: lightAnimation 2s $cubic-bezier 0.4s infinite alternate;
+        -moz-animation: lightAnimation 2s $cubic-bezier 0.4s infinite alternate;
         box-shadow: $lightSideShadow;
         -webkit-box-shadow: $lightSideShadow;
         -moz-box-shadow: $lightSideShadow;
@@ -70,6 +72,8 @@
         transform: rotate(15deg);
         left: 60px;
         animation: darkAnimation 2s $cubic-bezier 0.5s infinite alternate;
+        -webkit-animation: darkAnimation 2s $cubic-bezier 0.5s infinite alternate;
+        -moz-animation: darkAnimation 2s $cubic-bezier 0.5s infinite alternate;
         box-shadow: $darkSideShadow;
         -webkit-box-shadow: $darkSideShadow;
         -moz-box-shadow: $darkSideShadow;
