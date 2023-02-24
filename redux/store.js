@@ -9,7 +9,8 @@ import { GET_HEROES } from '../graphql/quieries/heroQueries';
 const middleware = [thunk];
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:5002/graphql' }),
+  // link: new HttpLink({ uri: 'http://localhost:5002/graphql' }),
+  link: new HttpLink({ uri: 'http://starwarsapi-env-1.eba-8cvjpnzu.eu-central-1.elasticbeanstalk.com/graphql' }),
   cache: new InMemoryCache(),
 });
 

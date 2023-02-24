@@ -19,7 +19,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5002/graphql',
+  // uri: 'http://localhost:5002/graphql',
+  uri: 'http://starwarsapi-env-1.eba-8cvjpnzu.eu-central-1.elasticbeanstalk.com/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -45,7 +46,7 @@ const MyApp = ({ Component, pageProps }) => {
   }, [headerRef]);
 
   const mainStyle = {
-    minHeight: `calc(100vh - ${headerHeight}px)`,
+    minHeight: `calc(100svh - ${headerHeight}px)`,
     paddingTop: `${router.pathname !== '/lyrics' ? '50px' : '0px'}`,
   };
 
