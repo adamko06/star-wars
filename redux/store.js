@@ -10,7 +10,7 @@ const middleware = [thunk];
 
 const client = new ApolloClient({
   // link: new HttpLink({ uri: 'http://localhost:5002/graphql' }),
-  link: new HttpLink({ uri: 'http://starwarsapi-env-1.eba-8cvjpnzu.eu-central-1.elasticbeanstalk.com/graphql' }),
+  link: new HttpLink({ uri: 'https://adamk-star-wars-api.herokuapp.com/graphql' }),
   cache: new InMemoryCache(),
 });
 

@@ -20,7 +20,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const client = new ApolloClient({
   // uri: 'http://localhost:5002/graphql',
-  uri: 'http://starwarsapi-env-1.eba-8cvjpnzu.eu-central-1.elasticbeanstalk.com/graphql',
+  uri: 'https://adamk-star-wars-api.herokuapp.com/graphql',
   cache: new InMemoryCache(),
 });
 
