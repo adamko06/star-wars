@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <>
       {router.pathname !== '/lyrics' && (
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
           <Link href='/lyrics'>
             <a className={styles.footer_lyrics}><span></span>Lyrics<span></span></a>
           </Link>
-        </div>
+        </footer>
       )}
     </>
   );
