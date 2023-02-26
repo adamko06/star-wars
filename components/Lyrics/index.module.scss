@@ -15,20 +15,20 @@
       font-weight: bold;
       text-align: justify;
       position: relative;
-      animation: scroll 10s linear forwards;
-      -webkit-animation: scroll 10s linear forwards;
-      -moz-animation: scroll 10s linear forwards;
+      animation: scroll 8s linear forwards;
+      -webkit-animation: scroll 8s linear forwards;
+      -moz-animation: scroll 8s linear forwards;
       img {
         margin: 200px 0 30px;
         width: 100%;
       }
       @keyframes scroll {
         from {
-          top: 100px;
+          top: 200px;
           transform: translateZ(0) rotateX(20deg);
         }
         to {
-          top: -1200px;
+          top: -300px;
           transform: translateZ(-400px) rotateX(21deg);
         }
       }
@@ -45,9 +45,9 @@
         font-weight: bold;
         text-align: justify;
         position: relative;
-        animation: scroll 15s linear forwards;
-        -webkit-animation: scroll 15s linear forwards;
-        -moz-animation: scroll 15s linear forwards;
+        animation: scroll 8s linear forwards;
+        -webkit-animation: scroll 8s linear forwards;
+        -moz-animation: scroll 8s linear forwards;
         img {
           margin: 200px 0 30px;
           width: 100%;
@@ -58,7 +58,7 @@
             transform: translateZ(0) rotateX(20deg);
           }
           to {
-            top: -1100px;
+            top: -800px;
             transform: translateZ(-300px) rotateX(20deg);
           }
         }
