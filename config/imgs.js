@@ -36,7 +36,7 @@ export default {
   'Jar Jar Binks': '/heroes/Jar_Jar_Binks.jpg',
   'Roos Tarpals': '/heroes/Roos_Tarpals.jpg',
   'Rugor Nass': '/heroes/Rugor_Nass.jpg',
-  'Ric Olié': '/heroes/Ric_Olié.jpg',
+  'Ric Olié': '/heroes/Ric_Olie.jpg',
   Watto: '/heroes/Watto.jpg',
   Sebulba: '/heroes/Sebulba.jpg',
   'Shmi Skywalker': '/heroes/Shmi_Skywalker.jpg',
