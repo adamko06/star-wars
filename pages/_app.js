@@ -19,10 +19,11 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 const client = new ApolloClient({
-  // uri: 'http://localhost:5002/graphql',
-  uri: 'https://adamk-star-wars-api.herokuapp.com/graphql',
+  uri: process.env.API_URL,
   cache: new InMemoryCache(),
 });
+
+console.log('app', process.env.API_URL);
 
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
@@ -35,7 +36,7 @@ const MyApp = ({ Component, pageProps }) => {
       }
     }
   }
-  
+
   // mainStyle
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
