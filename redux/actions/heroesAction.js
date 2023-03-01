@@ -1,14 +1,14 @@
-export const addHero = ({id, name}) => {
+export const addHero = ({_id, name}) => {
   return {
     type: 'ADDHERO',
-    hero: { id, name, isFavorite: true, side: "noSide" },
+    hero: { _id, name, isFavorite: true, side: "noSide" },
   };
 };
 
-export const removeHero = (id) => {
+export const removeHero = (_id) => {
   return {
     type: 'REMOVEHERO',
-    hero: { id, isFavorite: false, side: "noSide" },
+    hero: { _id, isFavorite: false, side: "noSide" },
   };
 };
 
@@ -18,10 +18,10 @@ export const resetHeroes = () => {
   };
 };
 
-export const addHeroSide = (id, side) => {
+export const addHeroSide = (_id, side) => {
   return {
     type: 'ADDHEROSIDE',
-    hero: { id, side },
+    hero: { _id, side },
   };
 };
 

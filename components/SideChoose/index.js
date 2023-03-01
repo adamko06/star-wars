@@ -20,7 +20,7 @@ const SideChoose = ({ heroId, actualHeroSide }) => {
 
   const chooseSide = (side) => {
     setSide(side);
-    chooseFavoriteSide({ variables: { id: heroId, side: side } });
+    chooseFavoriteSide({ variables: { _id: heroId, side: side } });
   };
 
   return (

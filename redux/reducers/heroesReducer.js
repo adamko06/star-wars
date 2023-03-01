@@ -9,11 +9,11 @@ const heroesReducer = (state = initialState, action) => {
     case 'ADDHERO':
 
       const addedHeroes = state.map((hero) => {
-        if (hero.id === action.hero.id && hero.isFavorite === false) {
+        if (hero._id === action.hero._id && hero.isFavorite === false) {
           swalWrapper('success', 'Hero Successfully Added');
           return { ...hero, isFavorite: true };
         }
-        if (hero.id === action.hero.id && hero.isFavorite === true) {
+        if (hero._id === action.hero._id && hero.isFavorite === true) {
           swalWrapper('error', 'This Hero Is Already Added');
           return { ...hero };
         } else {
@@ -24,11 +24,11 @@ const heroesReducer = (state = initialState, action) => {
 
     case 'REMOVEHERO':
       const removedHeroes = state.map((hero) => {
-        if (hero.id === action.hero.id && hero.isFavorite === true) {
+        if (hero._id === action.hero._id && hero.isFavorite === true) {
           swalWrapper('success', 'Hero Successfully Removed');
           return { ...hero, isFavorite: false, side: "noSide" };
         }
-        if (hero.id === action.hero.id && hero.isFavorite === false) {
+        if (hero._id === action.hero._id && hero.isFavorite === false) {
           swalWrapper('error', 'This Hero Is Already Removed');
           return { ...hero };
         } else {
@@ -46,13 +46,13 @@ const heroesReducer = (state = initialState, action) => {
 
     case 'ADDHEROSIDE':
       const updatedFavorites = state.map((hero) => {
-        return hero.id === action.hero.id ? { ...hero, side: action.hero.side } : { ...hero };
+        return hero._id === action.hero._id ? { ...hero, side: action.hero.side } : { ...hero };
       });
       return updatedFavorites;
 
     case 'SETHEROES':
-      const reducedFavorites = action.heroes?.map(({ id, name, isFavorite, side, films }) => ({
-        id,
+      const reducedFavorites = action.heroes?.map(({ _id, name, isFavorite, side, films }) => ({
+        _id,
         name,
         isFavorite,
         side,

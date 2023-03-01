@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 const GET_HEROES = gql`
   query getHeroes {
     heroes {
-      id
+      _id
       name
       side
       gender
@@ -18,9 +18,9 @@ const GET_HEROES = gql`
 `;
 
 const GET_HERO = gql`
-  query getHero($id: ID!) {
-    hero(id: $id) {
-      id
+  query getHero($_id: ID!) {
+    hero(_id: $_id) {
+      _id
       name
       side
       gender

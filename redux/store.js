@@ -12,12 +12,12 @@ const client = new ApolloClient({
   link: new HttpLink({ uri: process.env.API_URL }),
   cache: new InMemoryCache(),
 });
-console.log('store', process.env.API_URL);
 
 const fetchInitialData = async () => {
   const { data } = await client.query({
     query: GET_HEROES,
   });
+  console.log(data.heroes);
   return data;
 };
 

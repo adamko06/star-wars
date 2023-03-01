@@ -23,7 +23,7 @@ const ADD_HERO = gql`
       films: $films
       isFavorite: $isFavorite
     ) {
-      id
+      _id
       side
       name
       height
@@ -38,18 +38,18 @@ const ADD_HERO = gql`
 `;
 
 const ADD_FAVORITE = gql`
-  mutation addFavorite($id: ID!) {
-    addFavorite(id: $id) {
-      id
+  mutation addFavorite($_id: ID!) {
+    addFavorite(_id: $_id) {
+      _id
       name
     }
   }
 `;
 
 const REMOVE_FAVORITE = gql`
-  mutation removeFavorite($id: ID!) {
-    removeFavorite(id: $id) {
-      id
+  mutation removeFavorite($_id: ID!) {
+    removeFavorite(_id: $_id) {
+      _id
     }
   }
 `;
@@ -64,9 +64,9 @@ const RESET_FAVORITES = gql`
 
 
 const CHOOSE_FAVORITE_SIDE = gql`
-  mutation chooseFavoriteSide($id: ID!, $side: UpdateHeroSide) {
-    chooseFavoriteSide(id: $id, side: $side) {
-      id
+  mutation chooseFavoriteSide($_id: ID!, $side: UpdateHeroSide) {
+    chooseFavoriteSide(_id: $_id, side: $side) {
+      _id
       side
     }
   }

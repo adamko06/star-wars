@@ -19,11 +19,10 @@ const Detail = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const heroIndex = router.query.heroId;
   const heroId = router.query.heroId;
 
   // GraphQL
-  const { loading, error, data } = useQuery(GET_HERO, { variables: { id: heroId }, skip: !heroId });
+  const { loading, error, data } = useQuery(GET_HERO, { variables: { _id: heroId }, skip: !heroId });
 
   let content = data?.hero;
 
@@ -31,7 +30,7 @@ const Detail = () => {
 
   const [favorites, setFavorites] = useState();
 
-  const actualHero = favorites?.find((hero) => hero.id === heroId);
+  const actualHero = favorites?.find((hero) => hero._id === heroId);
   const actualHeroSide = actualHero?.side;
   const isFavorite = actualHero?.isFavorite;
 
@@ -40,16 +39,16 @@ const Detail = () => {
   }, [reduxFavorites]);
 
   const [addFavorite] = useMutation(ADD_FAVORITE, {
-    variables: { id: heroId, isFavorite: true },
+    variables: { _id: heroId, isFavorite: true },
     onCompleted: (data) => {
       dispatch(addHero(data.addFavorite));
     },
   });
 
   const [removeFavorite] = useMutation(REMOVE_FAVORITE, {
-    variables: { id: heroId, isFavorite: false },
+    variables: { _id: heroId, isFavorite: false },
     onCompleted: (data) => {
-      dispatch(removeHero(data.removeFavorite.id));
+      dispatch(removeHero(data.removeFavorite._id));
     },
   });
 

@@ -31,7 +31,7 @@ const Home = () => {
       if (movieIndex === 0 || undefined) return item;
       return item.films.includes(`https://swapi.dev/api/films/${movieIndex}/`);
     });
-    setHeroes(filteredContent?.map((hero) => ({ name: hero.name, id: hero.id, isFavorite: hero.isFavorite, side: hero.side })));
+    setHeroes(filteredContent?.map((hero) => ({ name: hero.name, _id: hero._id, isFavorite: hero.isFavorite, side: hero.side })));
     dispatch(currentFilterByMovie(movieIndex));
   };
 

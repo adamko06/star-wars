@@ -18,8 +18,8 @@ const Box = ({ heroes, hero, keyIndex }) => {
   });
 
   return (
-      <div className={styles.box_item} key={hero.id}>
-        <Link href={`hero/${hero.id}`}>
+      <div className={styles.box_item} key={hero._id}>
+        <Link href={`hero/${hero._id}`}>
           <a>
             <img
               className={actualHeroSide?.[keyIndex]}

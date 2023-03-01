@@ -23,8 +23,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-console.log('app', process.env.API_URL);
-
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
