@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import imgs from '../../config/imgs';
 
+import LazyLoad from 'react-lazy-load';
+
 import styles from './index.module.scss';
 
 const Box = ({ heroes, hero, keyIndex }) => {
@@ -18,9 +20,10 @@ const Box = ({ heroes, hero, keyIndex }) => {
   });
 
   return (
-      <div className={styles.box_item} key={hero._id}>
-        <Link href={`hero/${hero._id}`}>
-          <a>
+    <div className={styles.box_item} key={hero._id}>
+      <Link href={`hero/${hero._id}`}>
+        <a>
+          <LazyLoad once>
             <img
               className={actualHeroSide?.[keyIndex]}
               src={
@@ -28,13 +31,13 @@ const Box = ({ heroes, hero, keyIndex }) => {
                 'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
               }
             />
-
-            <div className={styles.box_item_overlay}>
-              <div className={styles.box_item_text}>{hero.name}</div>
-            </div>
-          </a>
-        </Link>
-      </div>
+          </LazyLoad>
+          <div className={styles.box_item_overlay}>
+            <div className={styles.box_item_text}>{hero.name}</div>
+          </div>
+        </a>
+      </Link>
+    </div>
   );
 };
 

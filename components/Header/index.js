@@ -31,7 +31,7 @@ const Header = React.forwardRef(({ _ }, ref) => {
                 dispatch(currentFilterByMovie());
               }}
             >
-              <img alt='starwars' src='/logo.svg' />
+              <img alt='starwars' src='/logo.png' />
             </a>
           </Link>
           <div>

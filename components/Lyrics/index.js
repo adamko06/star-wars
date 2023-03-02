@@ -14,7 +14,7 @@ const Lyrics = () => {
     <div className={styles.lyrics}>
       <div className={styles.lyrics_wrapper} onAnimationEnd={handleAnimationEnd}>
         <div className={styles.lyrics_wrapper_scroll}>
-          <img src='/logo.svg' alt='logo'></img>
+          <img src='/logo.png' alt='logo'></img>
           <p>
             Welcome to this Star Wars app that introduces you to the heroes of the Star Wars world. In this app, you can click
             through the list of heroes, see more information about each hero, such as a list of the movies they've starred in.

@@ -13,6 +13,8 @@ import { useMutation } from '@apollo/client';
 import SideChoose from '../SideChoose';
 import Button from 'react-bootstrap/Button';
 
+import LazyLoad from 'react-lazy-load';
+
 import styles from './index.module.scss';
 
 const Detail = () => {
@@ -61,15 +63,17 @@ const Detail = () => {
           <div className={styles.hero}>
             <div className={styles.hero_detail}>
               <div className={styles.hero_detail_item}>
-                <img
-                  className={`${
-                    actualHeroSide === 'light' ? styles.hero_light : actualHeroSide === 'dark' ? styles.hero_dark : ''
-                  }`}
-                  src={
-                    imgs[content.name] ||
-                    'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
-                  }
-                />
+                <LazyLoad once>
+                  <img
+                    className={`${
+                      actualHeroSide === 'light' ? styles.hero_light : actualHeroSide === 'dark' ? styles.hero_dark : ''
+                    }`}
+                    src={
+                      imgs[content.name] ||
+                      'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
+                    }
+                  />
+                </LazyLoad>
                 <div className={'mt-5 text-center'}>
                   {!isFavorite ? (
                     <Button variant='primary' onClick={() => addFavorite()}>
