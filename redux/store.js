@@ -17,7 +17,6 @@ const fetchInitialData = async () => {
   const { data } = await client.query({
     query: GET_HEROES,
   });
-  console.log(data.heroes);
   return data;
 };
 
