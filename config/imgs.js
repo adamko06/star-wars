@@ -34,7 +34,7 @@ export default {
   'Finis Valorum': '/heroes/finis_valorum.jpg',
   'Padmé Amidala': '/heroes/padme_amidala.jpg',
   'Jar Jar Binks': '/heroes/jar_jar_binks.jpg',
-  'Roos Tarpals': '/heroes/Roos_tarpals.jpg',
+  'Roos Tarpals': '/heroes/roos_tarpals.jpg',
   'Rugor Nass': '/heroes/rugor_nass.jpg',
   'Ric Olié': '/heroes/ric_olie.jpg',
   Watto: '/heroes/watto.jpg',
