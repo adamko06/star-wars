@@ -71,6 +71,16 @@ input {
   }
 }
 
+// Lazy Load
+.LazyLoad {
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+
+.is-visible {
+  opacity: 1;
+}
+
 // Mobile
 @media (max-width: $bp-sm) {
   h1 {
@@ -81,3 +91,5 @@ input {
     padding: 0 18px !important;
   }
 }
+
+
