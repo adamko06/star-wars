@@ -10,6 +10,7 @@ import Box from '../Box';
 
 import { Button } from 'react-bootstrap';
 import styles from './index.module.scss';
+import { FiUsers } from 'react-icons/fi';
 
 const Favorites = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const Favorites = () => {
               router.push('/');
             }}
           >
-            Reset Favorites
+            <FiUsers className='icon' /> Reset Favorites
           </Button>
         </div>
       )}

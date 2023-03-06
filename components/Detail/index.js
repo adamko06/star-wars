@@ -16,6 +16,7 @@ import Button from 'react-bootstrap/Button';
 import LazyLoad from 'react-lazy-load';
 
 import styles from './index.module.scss';
+import { FiUserPlus, FiUserMinus } from 'react-icons/fi';
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -77,11 +78,11 @@ const Detail = () => {
                 <div className={'mt-5 text-center'}>
                   {!isFavorite ? (
                     <Button variant='primary' onClick={() => addFavorite()}>
-                      Add to Favorites
+                      <FiUserPlus className='icon' /> Add to Favorites
                     </Button>
                   ) : (
                     <Button variant='primary' onClick={() => removeFavorite()}>
-                      Remove from Favorites
+                      <FiUserMinus className='icon' /> Remove from Favorites
                     </Button>
                   )}
                   {isFavorite && <SideChoose content={content} heroId={heroId} actualHeroSide={actualHeroSide} />}

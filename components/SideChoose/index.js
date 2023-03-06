@@ -53,7 +53,7 @@ const SideChoose = ({ heroId, actualHeroSide }) => {
       </div>
       {(side === 'light' || side === 'dark') && (
         <h5 className={`mt-4 d-flex ${side === 'light' ? 'justify-content-start' : 'justify-content-end'}`}>
-          „May the FORCE be with you“
+        {side === 'light' ? '„May the FORCE be with you“' : '„May the DARK-SIDE be with you“'}
         </h5>
       )}
     </>

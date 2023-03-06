@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Box from '../Box';
 import FilterDropdown from '../FilterDropdown';
 import Pagination from '../Pagination';
+import Sort from '../Sort';
 import { useSelector, useDispatch } from 'react-redux';
 import { currentFilterByMovie } from '../../redux/actions/filterByMovieAction';
 
@@ -35,6 +36,12 @@ const Home = () => {
     dispatch(currentFilterByMovie(movieIndex));
   };
 
+  // Sort By Name
+  const [sortDirection, setSortDirection] = useState(null);
+  const handleSort = (direction) => {
+    setSortDirection(direction);
+  };
+
   // Search
   const [search, setSearch] = useState('');
   const searchRef = useRef(null);
@@ -58,12 +65,17 @@ const Home = () => {
     setData(reduxHeroes);
     if (!loading && data) {
       filterByMovie(currentEpisode.episode);
+      if (sortDirection === 'up') {
+        setHeroes([...heroes].sort((a, b) => a.name.localeCompare(b.name)));
+      } else if (sortDirection === 'down') {
+        setHeroes([...heroes].sort((a, b) => b.name.localeCompare(a.name)));
+      }
     }
     document.addEventListener('click', handleClick);
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [loading, data, currentEpisode.episode, reduxHeroes]);
+  }, [loading, data, currentEpisode.episode, reduxHeroes, sortDirection]);
 
   return (
     <>
@@ -71,7 +83,10 @@ const Home = () => {
         <div className='container'>
           <div className={styles.home_toolbar} ref={searchRef}>
             <h1>Choose Your Favorite Heroes</h1>
-            <div className={styles.home_dropdown}>
+            <div className={styles.home_sorting}>
+              <Sort handleSort={handleSort} />
+            </div>
+            <div>
               <FilterDropdown handleClick={filterByMovie} actualSelection={currentEpisode.episode} />
             </div>
             <div>

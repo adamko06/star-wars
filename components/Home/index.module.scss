@@ -4,6 +4,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  &_sorting {
+    max-width: 42.5px;
+  }
   &_toolbar {
     display: flex;
     align-items: center;
@@ -42,8 +45,8 @@
       margin-bottom: 30px;
       & div {
         width: 233px;
-        margin-right: 0px;
-        &:last-child {
+        margin-right: 10px;
+        & input {
           margin-top: 10px;
         }
       }
