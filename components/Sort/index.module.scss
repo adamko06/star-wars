@@ -1,5 +1,18 @@
 @import '/styles/variables';
 
 .sorting {
-  color: $black_2;
+  &:hover {
+    position: relative;
+    &:after {
+      color: $white;
+      content: 'Sort';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -200%);
+    }
+  }
+  &_disable {
+    color: $black_2;
+  }
 }

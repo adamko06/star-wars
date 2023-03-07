@@ -25,21 +25,21 @@ const index = ({ handleSort }) => {
 
   return (
     <>
-      <Button onClick={handleButtonClick}>
+      <Button onClick={handleButtonClick} className={styles.sorting}>
         {currentDirection === 'up' ? (
           <>
             <HiArrowSmUp className='icon' />
-            <HiArrowSmDown className={`icon ${styles.sorting}`} />
+            <HiArrowSmDown className={`icon ${styles.sorting_disable}`} />
           </>
         ) : currentDirection === 'down' ? (
           <>
-            <HiArrowSmUp className={`icon ${styles.sorting}`} />
+            <HiArrowSmUp className={`icon ${styles.sorting_disable}`} />
             <HiArrowSmDown className='icon' />
           </>
         ) : (
           <>
-            <HiArrowSmUp className={`icon ${styles.sorting}`} />
-            <HiArrowSmDown className={`icon ${styles.sorting}`} />
+            <HiArrowSmUp className={`icon ${styles.sorting_disable}`} />
+            <HiArrowSmDown className={`icon ${styles.sorting_disable}`} />
           </>
         )}
       </Button>
