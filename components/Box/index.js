@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import imgs from '../../config/imgs';
+import images from '../../config/imagesConfig';
 
 import LazyLoad from 'react-lazy-load';
 
@@ -27,7 +27,7 @@ const Box = ({ heroes, hero, keyIndex }) => {
             <img
               className={actualHeroSide?.[keyIndex]}
               src={
-                imgs[hero.name] ||
+                images[hero.name] ||
                 'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
               }
             />

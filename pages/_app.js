@@ -1,22 +1,17 @@
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-
-// redux
 import { Provider } from 'react-redux';
 import { wrapper, store } from '../redux/store';
-
+import { SSRProvider } from '@react-aria/ssr';
 import Head from 'next/head';
+
 import Header from '../components/Header/index.js';
 import Footer from '../components/Footer/index.js';
-
-import { SSRProvider } from '@react-aria/ssr';
 
 import '../styles/styles.scss';
 import '../styles/alert.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { useRouter } from 'next/router';
-
-import { useEffect, useRef, useState } from 'react';
 
 const client = new ApolloClient({
   uri: process.env.API_URL,
@@ -26,21 +21,18 @@ const client = new ApolloClient({
 const MyApp = ({ Component, pageProps }) => {
   const router = useRouter();
 
-  if (typeof window !== 'undefined') {
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
     if (router.pathname === '/') {
       if (!localStorage.getItem('isLoaded')) {
         localStorage.setItem('isLoaded', true);
         router.replace('/lyrics');
       }
-    }
-  }
-
-  // mainStyle
-  const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
-  useEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight);
     }
   }, [headerRef]);
 

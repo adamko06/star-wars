@@ -1,10 +1,10 @@
 const pageReducer = (state = 1, action) => {
   switch (action.type) {
-    case 'NEXTPAGE':
+    case 'NEXT_PAGE':
       return state + 1;
-    case 'PREVIOUSPAGE':
+    case 'PREVIOUS_PAGE':
       return state - 1;
-    case 'DEFAULTPAGE':
+    case 'DEFAULT_PAGE':
       return 1;
     default:
       return state;

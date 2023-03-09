@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
+
 import { useState, useEffect } from 'react';
-import imgs from '../../config/imgs';
+import images from '../../config/imagesConfig';
+import heroDetail from '../../config/heroDetailConfig';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { removeHero, addHero } from '../../redux/actions/heroesAction';
@@ -10,13 +12,13 @@ import { ADD_FAVORITE, REMOVE_FAVORITE } from '../../graphql/mutations/heroMutat
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 
-import SideChoose from '../SideChoose';
-import Button from 'react-bootstrap/Button';
-
 import LazyLoad from 'react-lazy-load';
 
-import styles from './index.module.scss';
+import SideChoose from '../SideChoose';
+
 import { FiUserPlus, FiUserMinus } from 'react-icons/fi';
+import Button from 'react-bootstrap/Button';
+import styles from './index.module.scss';
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -55,7 +57,33 @@ const Detail = () => {
     },
   });
 
-  const sortOrder = [4, 5, 6, 1, 2, 3];
+  const episodesOrder = [4, 5, 6, 1, 2, 3];
+
+  function formatEpisodeName(url) {
+    const episodeNumber = url?.replace('https://swapi.dev/api/films/', '').replace('/', '');
+    let episodeName;
+    switch (episodeNumber) {
+      case '4':
+        episodeName = 'Episode I - The Phantom Menace';
+        break;
+      case '5':
+        episodeName = 'Episode II - Attack of the Clones';
+        break;
+      case '6':
+        episodeName = 'Episode III - Revenge of the Sith';
+        break;
+      case '1':
+        episodeName = 'Episode IV - A New Hope';
+        break;
+      case '2':
+        episodeName = 'Episode V - The Empire Strikes Back';
+        break;
+      case '3':
+        episodeName = 'Episode VI - Return of the Jedi';
+        break;
+    }
+    return episodeName;
+  }
 
   return (
     <>
@@ -70,7 +98,7 @@ const Detail = () => {
                       actualHeroSide === 'light' ? styles.hero_light : actualHeroSide === 'dark' ? styles.hero_dark : ''
                     }`}
                     src={
-                      imgs[content.name] ||
+                      images[content.name] ||
                       'https://www.edna.cz/runtime/userfiles/series/star-wars/Yoda-a2-b2b1b0b6e777597f84876486a22de50a.jpg'
                     }
                   />
@@ -91,52 +119,19 @@ const Detail = () => {
               <div className={styles.hero_detail_item}>
                 <h2>{content.name}</h2>
                 <ul>
-                  <li>
-                    <b>Gender:</b> {content.gender}
-                  </li>
-                  <li>
-                    <b>Height:</b> {content.height} cm
-                  </li>
-                  <li>
-                    <b>Mass:</b> {content.mass} kg
-                  </li>
-                  <li>
-                    <b>Hair:</b> {content.hair_color}
-                  </li>
-                  <li>
-                    <b>Skin:</b> {content.skin_color}
-                  </li>
+                  {heroDetail.map(({ key, value, unit }, index) => (
+                    <li key={index}>
+                      <b>{key}: </b>
+                      {content[value]} {unit}
+                    </li>
+                  ))}
                   <br />
                   <b>Films in which {content.name} has appeared:</b>
-                  {sortOrder.map((episodeIndex) => {
-                    const url = `https://swapi.dev/api/films/${episodeIndex}/`;
-                    const episodeNumber = content.films
-                      .find((film) => film === url)
-                      ?.replace('https://swapi.dev/api/films/', '')
-                      .replace('/', '');
-                    let episode;
-                    switch (episodeNumber) {
-                      case '4':
-                        episode = 'Episode I - The Phantom Menace';
-                        break;
-                      case '5':
-                        episode = 'Episode II - Attack of the Clones';
-                        break;
-                      case '6':
-                        episode = 'Episode III - Revenge of the Sith';
-                        break;
-                      case '1':
-                        episode = 'Episode IV - A New Hope';
-                        break;
-                      case '2':
-                        episode = 'Episode V - The Empire Strikes Back';
-                        break;
-                      case '3':
-                        episode = 'Episode VI - Return of the Jedi';
-                        break;
-                    }
-                    return <li key={episodeIndex}>{episode}</li>;
-                  })}
+                  {episodesOrder.map((episodeIndex) => (
+                    <li key={episodeIndex}>
+                      {formatEpisodeName(content.films.find((film) => film === `https://swapi.dev/api/films/${episodeIndex}/`))}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>

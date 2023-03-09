@@ -12,8 +12,8 @@ export const loadChars = async () => {
   try {
     const responses = await axios.all(urls.map((url) => axios.get(url)));
     return responses.flatMap((res) => res.data.results);
-  } catch (err) {
-    console.error(`Fetch error: ${err}`);
+  } catch (error) {
+    console.error(`Fetch error: ${error}`);
     return [];
   }
 };

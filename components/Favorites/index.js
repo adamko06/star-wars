@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
+import { useMutation } from '@apollo/client';
 import { resetHeroes } from '../../redux/actions/heroesAction.js';
 import { RESET_FAVORITES } from '../../graphql/mutations/heroMutations';
-import { useMutation } from '@apollo/client';
 
 import Box from '../Box';
 
 import { Button } from 'react-bootstrap';
-import styles from './index.module.scss';
 import { FiUsers } from 'react-icons/fi';
+import styles from './index.module.scss';
 
 const Favorites = () => {
   const router = useRouter();
@@ -21,7 +21,8 @@ const Favorites = () => {
   const isFavoriteEmpty = favorites?.length < 1;
 
   useEffect(() => {
-    setFavorites(reduxHeroes.filter((hero) => hero.isFavorite === true));
+    const filteredHeroes = reduxHeroes.filter((hero) => hero.isFavorite === true);
+    setFavorites(filteredHeroes);
   }, [reduxHeroes]);
 
   const [resetFavorites] = useMutation(RESET_FAVORITES, {

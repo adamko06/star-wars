@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentFilterByMovie } from '../../redux/actions/filterByMovieAction';
+
+import { GET_HEROES } from '../../graphql/quieries/heroQueries';
+import { useQuery } from '@apollo/client';
+
 import Box from '../Box';
 import FilterDropdown from '../FilterDropdown';
 import Pagination from '../Pagination';
 import Sort from '../Sort';
-import { useSelector, useDispatch } from 'react-redux';
-import { currentFilterByMovie } from '../../redux/actions/filterByMovieAction';
-
-import { GET_HEROES } from '../../graphql/quieries/heroQueries';
-import { useQuery } from '@apollo/client';
 
 import styles from './index.module.scss';
 
@@ -33,7 +35,7 @@ const Home = () => {
       return item.films.includes(`https://swapi.dev/api/films/${movieIndex}/`);
     });
     setHeroes(filteredContent?.map((hero) => ({ name: hero.name, _id: hero._id, isFavorite: hero.isFavorite, side: hero.side })));
-    dispatch(currentFilterByMovie(movieIndex));
+    dispatch(setCurrentFilterByMovie(movieIndex));
   };
 
   // Sort By Name

@@ -34,17 +34,15 @@ const SideChoose = ({ heroId, actualHeroSide }) => {
       </h3>
       <div className={styles.switchToggle}>
         <div
-          id='left'
           className={`${styles.switchToggle_toggle} ${side === 'light' ? styles.switchToggle_lightSide : null}`}
           onClick={() => chooseSide('light')}
         >
           {side !== 'light' && <>LIGHT</>}
         </div>
-        <div id='middle' className={styles.switchToggle_neutral} onClick={() => chooseSide('noSide')}>
+        <div className={styles.switchToggle_neutral} onClick={() => chooseSide('noSide')}>
           -
         </div>
         <div
-          id='right'
           className={`${styles.switchToggle_toggle} ${side === 'dark' ? styles.switchToggle_darkSide : null}`}
           onClick={() => chooseSide('dark')}
         >
@@ -53,7 +51,7 @@ const SideChoose = ({ heroId, actualHeroSide }) => {
       </div>
       {(side === 'light' || side === 'dark') && (
         <h5 className={`mt-4 d-flex ${side === 'light' ? 'justify-content-start' : 'justify-content-end'}`}>
-        {side === 'light' ? '„May the FORCE be with you“' : '„May the DARK-SIDE be with you“'}
+          {side === 'light' ? '„May the FORCE be with you“' : '„May the DARK-SIDE be with you“'}
         </h5>
       )}
     </>

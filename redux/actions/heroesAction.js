@@ -1,33 +1,33 @@
 export const addHero = ({_id, name}) => {
   return {
-    type: 'ADDHERO',
+    type: 'ADD_HERO',
     hero: { _id, name, isFavorite: true, side: "noSide" },
   };
 };
 
 export const removeHero = (_id) => {
   return {
-    type: 'REMOVEHERO',
+    type: 'REMOVE_HERO',
     hero: { _id, isFavorite: false, side: "noSide" },
   };
 };
 
 export const resetHeroes = () => {
   return {
-    type: 'RESETHEROES',
+    type: 'RESET_HEROES',
   };
 };
 
 export const addHeroSide = (_id, side) => {
   return {
-    type: 'ADDHEROSIDE',
+    type: 'ADD_HERO_SIDE',
     hero: { _id, side },
   };
 };
 
 export const setHeroes = (heroes) => {
   return {
-    type: 'SETHEROES',
-    heroes: { heroes },
+    type: 'SET_HEROES',
+    heroes,
   };
 };

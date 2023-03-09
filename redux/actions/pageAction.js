@@ -1,17 +1,17 @@
-export const previousPage = () => {
+export const goNextPage = () => {
   return {
-    type: 'PREVIOUSPAGE',
+    type: 'NEXT_PAGE',
   };
 };
 
-export const nextPage = () => {
+export const goPreviousPage = () => {
   return {
-    type: 'NEXTPAGE',
+    type: 'PREVIOUS_PAGE',
   };
 };
 
-export const defaultPage = () => {
+export const goDefaultPage = () => {
   return {
-    type: 'DEFAULTPAGE',
+    type: 'DEFAULT_PAGE',
   };
 };

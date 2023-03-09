@@ -1,6 +1,6 @@
 const filterByMovieReducer = (state = 0, action) => {
   switch (action.type) {
-    case 'CURRENTEPISODE':
+    case 'SET_CURRENT_EPISODE':
       return state = action;
     default:
       return state;

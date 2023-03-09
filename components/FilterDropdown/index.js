@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { defaultPage } from '../../redux/actions/pageAction';
+import { goDefaultPage } from '../../redux/actions/pageAction';
 
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -33,7 +33,7 @@ const FilterDropdown = ({ handleClick, actualSelection }) => {
 
   const handleChange = (number) => {
     handleClick(number);
-    dispatch(defaultPage());
+    dispatch(goDefaultPage());
   };
 
   return (

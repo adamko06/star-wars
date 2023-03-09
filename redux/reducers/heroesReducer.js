@@ -2,12 +2,9 @@ import { swalWrapper } from '../../helpers/mainHelper.js';
 
 const initialState = [];
 
-let favObtained;
-
 const heroesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADDHERO':
-
+    case 'ADD_HERO':
       const addedHeroes = state.map((hero) => {
         if (hero._id === action.hero._id && hero.isFavorite === false) {
           swalWrapper('success', 'Hero Successfully Added');
@@ -22,7 +19,7 @@ const heroesReducer = (state = initialState, action) => {
       });
       return addedHeroes;
 
-    case 'REMOVEHERO':
+    case 'REMOVE_HERO':
       const removedHeroes = state.map((hero) => {
         if (hero._id === action.hero._id && hero.isFavorite === true) {
           swalWrapper('success', 'Hero Successfully Removed');
@@ -37,20 +34,20 @@ const heroesReducer = (state = initialState, action) => {
       });
       return removedHeroes;
 
-    case 'RESETHEROES':
+    case 'RESET_HEROES':
       const resetHeroes = state.map((hero) => {
         return { ...hero, isFavorite: false, side: 'noSide' };
       });
       swalWrapper('success', 'Favorites Successfully Reseted');
       return resetHeroes;
 
-    case 'ADDHEROSIDE':
-      const updatedFavorites = state.map((hero) => {
+    case 'ADD_HERO_SIDE':
+      const updatedHeroes = state.map((hero) => {
         return hero._id === action.hero._id ? { ...hero, side: action.hero.side } : { ...hero };
       });
-      return updatedFavorites;
+      return updatedHeroes;
 
-    case 'SETHEROES':
+    case 'SET_HEROES':
       const reducedFavorites = action.heroes?.map(({ _id, name, isFavorite, side, films }) => ({
         _id,
         name,

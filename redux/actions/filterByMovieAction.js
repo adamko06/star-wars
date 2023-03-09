@@ -1,6 +1,6 @@
-export const currentFilterByMovie = (episode) => {
+export const setCurrentFilterByMovie = (episode) => {
   return {
-    type: 'CURRENTEPISODE',
+    type: 'SET_CURRENT_EPISODE',
     episode: episode,
   };
 };
