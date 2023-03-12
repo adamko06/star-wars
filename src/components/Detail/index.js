@@ -43,6 +43,12 @@ const Detail = () => {
     setFavorites(reduxFavorites);
   }, [reduxFavorites]);
 
+  const films = [1, 2, 3, 4, 5];
+  const rndChoose = films[Math.floor(Math.random() * films.length)];
+  useEffect(() => {
+    console.log('výběrr:', rndChoose);
+  }, []);
+
   const [addFavorite] = useMutation(ADD_FAVORITE, {
     variables: { _id: heroId, isFavorite: true },
     onCompleted: (data) => {

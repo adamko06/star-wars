@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
-    prependData: `@import "./styles/_variables.scss";`,
+    prependData: `@import "./src/styles/_variables.scss";`,
   },
   env: {
     API_URL:
